@@ -1,0 +1,33 @@
+{
+  "name": "fyp_easybus",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "FYP_EasyBus",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rajanisagar/FYP_EasyBus.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rajanisagar/FYP_EasyBus/issues"
+  },
+  "homepage": "https://github.com/rajanisagar/FYP_EasyBus#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.1",
+    "express": "^4.17.3",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.6"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "nodemon": "^2.0.15"
+  }
+}
