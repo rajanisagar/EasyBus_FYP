@@ -21,14 +21,14 @@ export default function Search(props) {
         dispatch(listBuses({}));
     }, [dispatch,from, to, departureDate]);
    const navigate = useNavigate()
-   const chanheTheDate =  function(d){
+   const changeTheDate =  function(d){
     return (d.getMonth() + 1) + 
     "-" +  d.getDate() +
     "-" +  d.getFullYear();
 } 
 
     const submitHandler = (e) => {
-      departureDate = chanheTheDate(departureDate);
+      departureDate = changeTheDate(departureDate);
       e.preventDefault();
       navigate(`/search/from/${from}/to/${to}/departureDate/${departureDate}`);
     };

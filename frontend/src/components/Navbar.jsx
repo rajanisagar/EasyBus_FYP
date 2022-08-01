@@ -138,7 +138,7 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1rem 2rem;
+  margin: 0.5rem 2rem;
   .brand {
     .container {
       cursor: pointer;
@@ -171,6 +171,7 @@ const Nav = styled.nav`
 
   }
   ul {
+    margin-top: 0.5rem;
     display: flex;
     gap: 1rem;
     list-style-type: none;
@@ -217,6 +218,7 @@ const Nav = styled.nav`
 
 
   button {
+    
     padding: 0.5rem 1rem;
     cursor: pointer;
     border-radius: 1rem;

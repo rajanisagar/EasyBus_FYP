@@ -13,6 +13,7 @@ import Ratting from '../components/Ratting';
 import { prices, ratings } from '../utils';
 import Search from '../components/Search';
 
+
 export default function SearchScreen(props) {
   const {
     name = 'all',
@@ -27,6 +28,27 @@ export default function SearchScreen(props) {
   } = useParams();
 
 
+//search from the search screen
+
+  const [from_s, setFrom] = useState('');
+  const [to_s, setTo] = useState('');
+  let [departureDate_s, setDepartureDate] = useState(new Date());
+
+  const changeTheDate =  function(d){
+    return (d.getMonth() + 1) + 
+    "-" +  d.getDate() +
+    "-" +  d.getFullYear();
+} 
+
+    const submitHandler = (e) => {
+      departureDate_s = changeTheDate(departureDate_s);
+      e.preventDefault();
+      navigate(`/search/from/${from_s}/to/${to_s}/departureDate/${departureDate_s}`);
+    };
+  
+
+
+    
 
   // console.log(departureDate)
 
@@ -58,6 +80,9 @@ export default function SearchScreen(props) {
 
  
 
+
+
+
   const getFilterUrl = (filter) => {
     const filterCategory = filter.category || category;
     const filterName = filter.name || name;
@@ -80,13 +105,13 @@ export default function SearchScreen(props) {
    
              
 {/* <form onSubmit={submitHandler}> */}
-<form >
+<form onSubmit={submitHandler}>
     <div className="row ml-5 searchScreenSection ">
     
     <div className="col-3  ">
      
       {/* onChange={(e) => setFrom(e.target.value)} */}
-      <select required class="custom-select  select-location ">
+      <select onChange={(e) => setFrom(e.target.value)}  required class="custom-select  select-location ">
       <option  value=""  >Select Departure</option>
       <option value="sukkur">Sukkur</option>
       <option value="lahore"> Lahore </option>
@@ -96,7 +121,7 @@ export default function SearchScreen(props) {
       <div className="col-3">
      
       {/* onChange={(e) => setTo(e.target.value)} */}
-<select required  class="custom-select select-location">
+<select onChange={(e) => setTo(e.target.value)}  required  class="custom-select select-location">
   <option     value="">Select Arrival</option>
   <option value="karachi">Karachi</option>
   <option value="faisalabad">Faisalabad</option>
@@ -106,7 +131,7 @@ export default function SearchScreen(props) {
       <div className="col-3">
      
       {/* selected={departureDate} onChange={(date) => setDepartureDate(date)} */}
-<DatePicker     className="custom-select custom-date"  />
+<DatePicker   selected={departureDate_s} onChange={(date) => setDepartureDate(date)}  className="custom-select custom-date"  />
 
       </div>
 
@@ -143,20 +168,20 @@ export default function SearchScreen(props) {
                        <ul className="list-menu ">
                         <li class="custom-control custom-checkbox">
                             <Link
-                            className={'all' === category ? 'active' : ''}
+                            className={'all' === category ? 'font-weight-bolder' : ''}
                             to={getFilterUrl({ category: 'all' })}
                           >
-                            Any
+                             Any
                           </Link>
                           </li>
-                          
+                       
 
 
                           
-                           {categories.map((c) => (
+                           {categories && categories.map((c) => (
                           <li class="custom-control custom-checkbox">
                             <Link key={c}
-                              className={c === category ? 'active' : ''}
+                              className={c === category ? 'font-weight-bolder' : ''}
                               to={getFilterUrl({ category: c })}
                             >
                               {c}
@@ -186,7 +211,7 @@ export default function SearchScreen(props) {
                             <Link key={p.name}
                              to={getFilterUrl({ min: p.min, max: p.max })}
                              className={
-                              `${p.min}-${p.max}` === `${min}-${max}` ? 'active' : ''
+                              `${p.min}-${p.max}` === `${min}-${max}` ? 'font-weight-bolder' : ''
                             }
                             >
                             {p.name}
@@ -233,7 +258,7 @@ export default function SearchScreen(props) {
           <li key={r.name}>
             <Link
               to={getFilterUrl({ rating: r.rating })}
-              className={`${r.rating}` === `${rating}` ? 'active' : ''}
+              className={`${r.rating}` === `${rating}` ? 'font-weight-bolder' : ''}
             >
               <Ratting caption={' & up'} rating={r.rating}></Ratting>
             </Link>
@@ -551,8 +576,8 @@ export default function SearchScreen(props) {
                 </div>
                 <div className="col-6 timeline border-left ml-5">
                   <div className="text-1 timeline-circle  row">
-                    <div className="font-weight-bold d-block ml-3 ml-3 mb-4 col-12 for-font">
-                      Lahore
+                    <div className="font-weight-bold d-block ml-3 ml-3 mb-4 col-12 for-font text-capitalize">
+                      {bus.from}
                     </div>
                     <div></div>
                     {/* <div
@@ -574,8 +599,8 @@ export default function SearchScreen(props) {
                     </div> */}
                   </div>
                   <div className="text-1 timeline-circle row">
-                    <div className="font-weight-bold d-block ml-3 col-12 for-font">
-                      Rawalpindi
+                    <div className="font-weight-bold d-block ml-3 col-12 for-font text-capitalize">
+                      {bus.to}
                     </div>
                     {/* <div
                       title="Kainat Trravels &amp; Kohistan Express, Peshawar road"
@@ -676,11 +701,12 @@ export default function SearchScreen(props) {
                     <button
                       type="submit"
                       className="btn btn btn-primary bookBtn"
+                      onClick={()=>navigate(`/bus/${bus._id}`)}
                     >
                       BOOK
                     </button>
 
-                    <Link to={`/bus/${bus._id}`}></Link>
+                   
                   </form>
                 </div>
               </div>

@@ -18,10 +18,10 @@ body {
 
 ::-webkit-scrollbar {
   width: 0.6rem;
-  background-color: #14213d;
+  background-color: #c7ccd6;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #4539e6;
+  background-color: #707079;
 }
 
 
@@ -64,7 +64,13 @@ body {
   background-color: #d7dde4;
   
   border-top: 50px solid #0077b6;
-  height: 100%;
+  min-height: 100vh;
+
+
+
+    /* position: absolute;   */
+   
+    
 }
 
 .aside-dev{
@@ -298,3 +304,107 @@ padding-left: 1.5rem;
   margin: 1rem 0;
   display: block;
 }
+
+
+
+
+
+/* 
+.grid-container {
+  
+  
+  background-color: green;
+  display: flex;
+  justify-content: center;
+  
+} */
+/* main {
+  height: 100%;
+  background-color: red;
+  margin: 0 20px;
+} */
+
+
+
+.bus-screen-details {
+background-color: #0077b6;
+width: 100%;
+color: white !important;
+
+
+}
+.p {
+font-size: 0.9rem;
+}
+.btn-back{
+  background-color: transparent ;
+  border: none;
+
+
+  margin-top: -0.5rem;
+  margin-left: -2rem;
+}
+
+.btn-back >p     {
+
+ 
+  color: white;
+  font-size: 3rem;
+  transform: scale(1.5, 3);
+  font-weight: 70; margin-left: -10;
+
+}
+
+.bus_seats {
+	/* display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 600px;
+	justify-content: space-evenly; */
+	margin: 1% ;
+	/* background-color: #f3f3f3; */
+	border-radius: 10px;
+	color: #000000;
+  border: 2px solid  #DEE2E6;
+ 
+}
+
+.bus_seats_book{
+  border-radius: 10px;
+	color: #000000;
+  border: 2px solid  #DEE2E6;
+  margin-top: 7% ;
+}
+
+
+
+.book_btn_bus_screen{
+  width: 84%;
+  margin: 2% auto;
+  font-size: 1.rem;
+  border-radius: 0.2rem;
+  background-color: #0077b6;
+  margin-top: 1rem;
+}
+.book_btn_bus_screen:hover{
+  background-color: #005786;
+}
+
+/* 
+fieldset {
+  margin-top: 10rem; 
+  
+} */
+
+.badge-dark{
+  background-color: #0077b6;
+  color: white;
+  padding: 0.5rem;
+  /* border-radius: 0.2rem; */
+  font-size: 0.8rem;
+  margin: 3% auto;
+  margin-top: -100%;
+}
+
