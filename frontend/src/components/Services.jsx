@@ -52,8 +52,10 @@ export default function Services() {
 }
 
 const Section = styled.section`
-  margin-top:1rem;
-  padding: 5rem 7rem;
+  // margin-top:1rem
+
+  padding: 1rem 3rem;
+  margin-bottom: 5rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;

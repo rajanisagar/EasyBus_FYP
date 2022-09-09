@@ -20,6 +20,8 @@ import Recommend from "../components/Recommend";
 import ScrollToTop from "../components/ScrollToTop";
 import Services from "../components/Services";
 import Testimonials from "../components/Testimonials";
+import About from '../components/About.js';
+import Ourapp from '../components/Ourapp.js';
 export default function HomeScreen(){
 
   const  [from, setFrom] = useState('')
@@ -55,12 +57,15 @@ export default function HomeScreen(){
 
 <div className='home'>
   
-  <ScrollToTop />
+  {/* <ScrollToTop /> */}
      
       <Hero />
       <Services />
-      <h2 className="slider-header">Best Deals & Offers</h2>
-      <Carousel  className='slider' autoPlay showThumbs={false}>
+      <About/>
+      
+      <Ourapp/>
+      {/* <h2 className="slider-header">Best Deals & Offers</h2> */}
+      {/* <Carousel  className='slider' autoPlay showThumbs={false}>
       
           <div >
                 <img src={deals1} />
@@ -72,8 +77,10 @@ export default function HomeScreen(){
   
   
            
-      </Carousel>
+      </Carousel> */}
+
       <Testimonials />
+      <Footer/>
      </div>
       
           

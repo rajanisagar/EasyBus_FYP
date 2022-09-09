@@ -51,6 +51,12 @@ const busSchema = new mongoose.Schema({
         require: true,
       
     },
+    seats: [
+        {
+            id: String,
+            isAvailable: Boolean,
+        }
+    ]
 }, {
     timestamps: true
 })

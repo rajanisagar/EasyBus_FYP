@@ -44,11 +44,7 @@ export default function Hero() {
       <div className="content">
         <div className="title">
           <h1>TRAVEL TO EXPLORE</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
-            natus, enim ipsam magnam odit deserunt itaque? Minima earum velit
-            tenetur!
-          </p>
+
         </div>
         {/* <form onSubmit={submitHandler}>
         <div className="search">
@@ -91,9 +87,9 @@ export default function Hero() {
 
 const Section = styled.section`
   position: relative;
-  margin-top: 1rem;
+  margin-top: -1rem;
   width: 100%;
-  height: 100%;
+  // height: 100%;
 
   .background {
     height: 100%;
@@ -103,6 +99,7 @@ const Section = styled.section`
     }
   }
   .content {
+    margin-top: 15rem;
     height: 100%;
     width: 100%;
     position: absolute;
@@ -111,7 +108,7 @@ const Section = styled.section`
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    // justify-content: center;
     align-items: center;
     gap: 1rem;
     .title {
@@ -127,53 +124,8 @@ const Section = styled.section`
         font-size: 1.2rem;
       }
     }
-    .search {
-      display: flex;
-      background-color: #ffffffce;
-      padding: 0.5rem;
-      padding-bottom: 1.2rem ;
-      border-radius: 0.5rem;
-      .container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        padding: 0 1.5rem;
-        label {
-          font-size: 1.1rem;
-          color: #03045e;
-        }
-        // input {
-        //   // background-color: transparent;
-        //   // border: none;
-        //   text-align: center;
-        //   color: black;
-        //   &[type="date"] {
-        //     padding-left: 3rem;
-        //   }
 
-          &::placeholder {
-            color: black;
-          }
-          &:focus {
-            outline: none;
-          }
-        }
-      }
-      button {
-        padding: 1rem;
-        cursor: pointer;
-        border-radius: 0.3rem;
-        border: none;
-        color: white;
-        background-color: #4361ee;
-        font-size: 1.1rem;
-        text-transform: uppercase;
-        transition: 0.3s ease-in-out;
-        &:hover {
-          background-color: #023e8a;
-        }
-      }
+
     }
   }
   @media screen and (min-width: 280px) and (max-width: 980px) {

@@ -25,11 +25,11 @@ export default function PlaceOrderScreen(props) {
 
   const toPrice = (num) => Number(num.toFixed(2)); // 5.123 => "5.12" => 5.12
   bookSeats.itemsPrice = toPrice(
-    bookSeats.bookedSeats.reduce((a, c) => a + c.qty * c.price, 0)
+    bookSeats.bookedSeats.reduce((a, c) => a + 1 * c.price, 0)
   );
   bookSeats.shippingPrice = bookSeats.itemsPrice > 100 ? toPrice(0) : toPrice(10);
   bookSeats.taxPrice = toPrice(0.15 * bookSeats.itemsPrice);
-  bookSeats.totalPrice = bookSeats.itemsPrice + bookSeats.shippingPrice + bookSeats.taxPrice;
+  bookSeats.totalPrice = bookSeats.itemsPrice ;
   const dispatch = useDispatch();
   const placeOrderHandler = () => {
     dispatch(createOrder({ ...bookSeats, orderItems: bookSeats.bookedSeats }));
@@ -44,12 +44,12 @@ export default function PlaceOrderScreen(props) {
   return (
     <div>
       <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
-      <div className="row top">
-        <div className="col-2">
+      <div className="row ">
+        <div className="col-6">
           <ul>
             <li>
               <div className="card card-body">
-                <h2>Shipping</h2>
+                <h2>User Details</h2>
                 <p>
                   <strong>Name:</strong> {bookSeats.shippingAddress.fullName} <br />
                   <strong>Address: </strong> {bookSeats.shippingAddress.address},
@@ -68,27 +68,28 @@ export default function PlaceOrderScreen(props) {
             </li>
             <li>
               <div className="card card-body">
-                <h2>Order Items</h2>
+                <h2>Seats</h2>
                 <ul>
                   {bookSeats.bookedSeats.map((item) => (
-                    <li key={item.bus}>
+                    <li key={item.id}>
                       <div className="row">
                         <div>
-                          <img
+                         {item.seatId}
+                          {/* <img
                             src={item.image}
-                            alt={item.name}
+                            alt={item.seatId}
                             className="small"
-                          ></img>
+                          ></img> */}
                         </div>
                         <div className="min-30">
                             
                           <Link to={`/bus/${item.bus}`}>
-                            {item.name}
+                            {item.seller.seller.name}
                           </Link>
                         </div>
 
                         <div>
-                          {item.qty} x ${item.price} = ${item.qty * item.price}
+                           PKR {item.price}
                         </div>
                       </div>
                     </li>
@@ -98,40 +99,19 @@ export default function PlaceOrderScreen(props) {
             </li>
           </ul>
         </div>
-        <div className="col-1">
+        <div className="col-6">
           <div className="card card-body">
             <ul>
               <li>
-                <h2>Order Summary</h2>
+                <h2>Summary</h2>
               </li>
+            
               <li>
-                <div className="row">
-                  <div>Items</div>
-                  <div>${bookSeats.itemsPrice.toFixed(2)}</div>
-                </div>
-              </li>
-              <li>
-                <div className="row">
-                  <div>Shipping</div>
-                  <div>${bookSeats.shippingPrice.toFixed(2)}</div>
-                </div>
-              </li>
-              <li>
-                <div className="row">
-                  <div>Tax</div>
-                  <div>${bookSeats.taxPrice.toFixed(2)}</div>
-                </div>
-              </li>
-              <li>
-                <div className="row">
-                  <div>
-                    <strong> Order Total</strong>
-                  </div>
-                  <div>
-                    <strong>${bookSeats.totalPrice.toFixed(2)}</strong>
-                  </div>
-                </div>
-              </li>
+                            <h2>
+                                {console.log(bookSeats.totalPrice)}
+                                Total ({bookSeats.bookedSeats.reduce((a, c) => a + 1, 0)} Seats) : PKR {bookSeats.bookedSeats.reduce((a, c) => a + c.price * 1, 0)  } 
+                            </h2>
+                        </li>
               <li>
                 <button
                   type="button"
@@ -139,7 +119,7 @@ export default function PlaceOrderScreen(props) {
                   className="primary block"
                   disabled={bookSeats.bookedSeats.length === 0}
                 >
-                  Place Order
+                  Checkout
                 </button>
               </li>
               {loading && <LoadingBox></LoadingBox>}

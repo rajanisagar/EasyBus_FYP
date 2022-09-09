@@ -7,17 +7,17 @@ export const bookSeatsReducer = (state = {bookedSeats:[]}, action) =>{
         case BOOK_SEAT:
             // seat =>> item
             const seat = action.payload;
-            const existSeat = state.bookedSeats.find(x => x.bus === seat.bus);
+            const existSeat = state.bookedSeats.find(x => x.id === seat.id);
             if(existSeat){
                 return {
                     ...state,
-                    bookedSeats: state.bookedSeats.map( x => x.bus === existSeat.bus? seat: x)
+                    bookedSeats: state.bookedSeats.map( x => x.id === existSeat.id? seat: x)
                 }
-            } else{
+            }else{
                 return { ...state, bookedSeats: [...state.bookedSeats, seat] }
-            }
+             } 
         case REMOVE_SEAT:
-            return {...state, bookedSeats: state.bookedSeats.filter( x => x.bus !== action.payload)} 
+            return {...state, bookedSeats: state.bookedSeats.filter( x => x.id !== action.payload)} 
        // BOOKSEATS_SHIPPING_ADDRES  === CART_SAVE_SHIPPING_ADDRESS
         case BOOKSEATS_SHIPPING_ADDRES:
             return { ...state, shippingAddress: action.payload };

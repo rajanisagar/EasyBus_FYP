@@ -32,47 +32,50 @@ export default function Testimonials() {
     </Section>
 
       <div className="title">
-        <h2>Happy Customers</h2>
+        <h2>Group Members</h2>
       </div>
       <div className="testimonials">
         <div className="testimonial">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
-            asperiores eaque.
-          </p>
+
           <div className="info">
             <img src={avatarImage1} alt="" />
             <div className="details">
-              <h4>Abdul Ghafoor</h4>
+              <h4>Sagar Rajani</h4>
               <span>Student</span>
             </div>
           </div>
-        </div>
-        <div className="testimonial">
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
             asperiores eaque.
           </p>
+        </div>
+        <div className="testimonial">
+
           <div className="info">
             <img src={avatarImage2} alt="" />
             <div className="details">
-              <h4>Abdul Jabbar</h4>
+              <h4>Ali Baloch</h4>
               <span>Student</span>
             </div>
           </div>
-        </div>
-        <div className="testimonial">
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
             asperiores eaque.
           </p>
+        </div>
+        <div className="testimonial">
+
           <div className="info">
             <img src={avatarImage3} alt="" />
             <div className="details">
-              <h4>Hizbullah</h4>
+              <h4>Sdheer Ahmed</h4>
               <span>Student</span>
             </div>
           </div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
+            asperiores eaque.
+          </p>
         </div>
       </div>
      
@@ -84,11 +87,12 @@ export default function Testimonials() {
 }
 
 const Section = styled.section`
-  margin: 5rem 0;
+  // margin: 1rem 0;
+  margin-top:-25rem;
   .title {
     text-align: center;
     margin-bottom: 2rem;
-    margin-top:10rem;
+    margin-top:12rem;
   }
   .testimonials {
     display: flex;
@@ -97,7 +101,7 @@ const Section = styled.section`
     gap: 2rem;
     .testimonial {
       background-color: aliceblue;
-      padding: 1rem 7rem;
+      padding: 0.5rem 2rem;
       border-radius: 0.5rem;
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
       transition: 0.3s ease-in-out;
@@ -109,8 +113,8 @@ const Section = styled.section`
         display: flex;
         justify-content: center;
         gap: 1rem;
-        align-items: center;
-        margin-top: 1rem;
+        align-items: start;
+        margin-top: 0.9rem;
         img {
           border-radius: 3rem;
           height: 3rem;

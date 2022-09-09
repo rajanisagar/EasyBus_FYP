@@ -19,21 +19,21 @@ export default function BookedSeatsScreen(props) {
     // console.log({ id, qty, qtyParam: Number(searchParms.get("qty")) });
     const dispatch = useDispatch();
     useEffect(() =>{
-        if(id) {
-            dispatch(bookSeat(id, qty))
-        }
-    }, [dispatch, id, qty])
+        // if(id) {
+        //     dispatch(bookSeat(id, qty))
+        // }
+    }, [])
     const removeFromBookedSeatsHandler = (id) => {
         dispatch(removeFromBookedSeats(id));
     }
     const checkOutHandler = (id) => {
         //
-         navigate('/signin?redirect=/shipping')
+         navigate('/signin?redirect=/userDetails')
     }
-    
+
     return (
-      <div className='row top'>
-            <div className='col-2'>
+      <div className='row'>
+            <div className='col-6'>
                 <h1>Booked Seats</h1>
                 {
                     bookedSeats.length === 0 ?<MessageBox>
@@ -41,56 +41,61 @@ export default function BookedSeatsScreen(props) {
                     </MessageBox>
                     :
                     (
-                        <ul>
-                            {
+
+                        <table className="table">
+                        <thead>
+                          <tr>
+                             <th>Seat Number</th>
+                             <th>PRICE</th>
+                            <th>Bus Vendor</th>
+                            {/* <th>Bus Type</th> */}
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Departure Date</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+
+                            {  
                                 bookedSeats.map((item) => (
-                                    <li key={item.bus}>
-                                        <div className='row'>
-                                            <div>
-                                                <img src={item.image} alt={item.operator} className="small"></img>
-                                            </div>
-                                            <div className='min-30'>
-                                                <Link to={`/bus/${item.bus}`}>{item.name}{console.log(item.price)}</Link>
-                                            </div>
-                                            <div>
-                                                <select value={item.qty} onChange={e => dispatch(bookSeat(item.bus ,Number(e.target.value))  )}>
-                                                {
-                                                        [...Array(item.seats_remaining).keys()].map((x) => (
-                                                            <option key={x + 1} value={x + 1}>
-                                                                {x + 1}
-                                                            </option>
-                                                        ))
-                                                    }
-                                                </select> 
-                                            </div>
-                                            <div>
-                                                PKR {item.price}
-                                            </div>
-                                            <div>
+  
+                                    <tr key={item.id}>
+                                        
+                                            <td>{item.seatId}</td>
+                                            <td>{item.price}</td>
+                                            <td>{item.seller.seller.name}</td>
+                                            {/* <td>{item.busType}</td> */}
+                                            <td>{item.from}</td>
+                                            <td>{item.to}</td>
+                                            <td>{item.departureDate}</td>
+                                            <td>
                                                 <button type='button' onClick={() => 
-                                                    removeFromBookedSeatsHandler(item.bus)}>
+                                                    removeFromBookedSeatsHandler(item.id)}>
                                                      Delete
                                                 </button>
-                                            </div>
-                                        </div>
-                                    </li>
+                                            </td>
+                                       
+                                    </tr>
                                     ))
                             }
                            
-                        </ul>
+                        </tbody>
+                        </table>
+
                     )
 
 
                 }
 
             </div>
-            <div className='col-1'>
+            <div className='col-'>
                 <div className='card card-body'>
                     <ul>
                         <li>
                             <h2>
                                 {/* seats === items */}
-                                Subtotal ({bookedSeats.reduce((a, c) => a + c.qty, 0)} Seats) : ${bookedSeats.reduce((a, c) => a + c.price * c.qty, 0)  } 
+                                Subtotal ({bookedSeats.reduce((a, c) => a + 1, 0)} Seats) : ${bookedSeats.reduce((a, c) => a + c.price * 1, 0)  } 
                             </h2>
                         </li>
                         <li>
