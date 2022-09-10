@@ -22,7 +22,7 @@ export default function Testimonials() {
               <span>Associate Professor</span>
             </div>
           </div>
-          <p className="mt-5"> 
+          <p className="mt-5 text-justify"> 
           Dr. Faheem Akhtar Rajput received his Ph.D. in Software Engineering (Data Science, Machine Learning, and Deep Learning) from Beijing University of Technology, Beijing, China in 2020. In addition, he completed his MS in Computer Science from National University, FAST, Karachi, Pakistan, and his Bachelors from Hamdard University Karachi. He has previously been part of the Computer Science faculty at WebXZone (Team Lead & Trainer), National University FAST, Muhammad Ali Jinnah University, and Bahria University Karachi. He is working at IBA University since 2013. Presently, he is working as an Associate Professor (BPS-20) and Coordinator of ABET/NCEAC Accreditation at the Computer Science Department. He has vast experience in teaching (around 14 years) and research. He has been part of various bodies and councils throughout his academic and professional career. 
           </p>
 
@@ -41,12 +41,12 @@ export default function Testimonials() {
             <img src={avatarImage1} alt="" />
             <div className="details">
               <h4>Sagar Rajani</h4>
-              <span>Student</span>
+              <span>Web Developer</span>
             </div>
           </div>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
-            asperiores eaque.
+          <p className="">
+            Computer Science Student - Sukkur IBA University 
+            
           </p>
         </div>
         <div className="testimonial">
@@ -55,12 +55,11 @@ export default function Testimonials() {
             <img src={avatarImage2} alt="" />
             <div className="details">
               <h4>Ali Baloch</h4>
-              <span>Student</span>
+              <span>Android Developer</span>
             </div>
           </div>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
-            asperiores eaque.
+          Computer Science Student - Sukkur IBA University 
           </p>
         </div>
         <div className="testimonial">
@@ -69,12 +68,11 @@ export default function Testimonials() {
             <img src={avatarImage3} alt="" />
             <div className="details">
               <h4>Sdheer Ahmed</h4>
-              <span>Student</span>
+              <span>UI/UX Developer</span>
             </div>
           </div>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
-            asperiores eaque.
+          Computer Science Student - Sukkur IBA University 
           </p>
         </div>
       </div>

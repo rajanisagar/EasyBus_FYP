@@ -51,7 +51,7 @@ export default function ProfileScreen() {
     }
   };
     return(
-        <div>
+        <div className='marginTop'>
             <form className='form' onSubmit={submitHandler}>
                 <div>
                     <h1>User Profile</h1>
@@ -67,42 +67,42 @@ export default function ProfileScreen() {
                     {successUpdate && (<MessageBox variant='success'>Profle Updated Successfully</MessageBox>)}
                     <div>
                         <label htmlFor='name'>Name</label>
-                        <input id='name' type={'text'} placeholder='Enter Name' value={name} onChange={(e) => setName(e.target.value)}  ></input>
+                        <input className='form-control' id='name' type={'text'} placeholder='Enter Name' value={name} onChange={(e) => setName(e.target.value)}  ></input>
                     </div>
                     <div>
                         <label htmlFor='email'>Email</label>
-                        <input id='email' type={'email'} placeholder='Enter Email' value={email} onChange={(e) => setEmail(e.target.value)} ></input>
+                        <input className='form-control' id='email' type={'email'} placeholder='Enter Email' value={email} onChange={(e) => setEmail(e.target.value)} ></input>
                     </div>
                     <div>
                         <label htmlFor='Password'>Password</label>
-                        <input id='Password' type={'password'} placeholder='Enter Password' onChange={(e) => setPassword(e.target.value)}  ></input>
+                        <input className='form-control' id='Password' type={'password'} placeholder='Enter Password' onChange={(e) => setPassword(e.target.value)}  ></input>
                     </div>
                     <div>
                         <label htmlFor='confirmPassword'>Confirm Password</label>
-                        <input id='confirmPassword' type={'password'} placeholder='Enter Confirm Password' onChange={(e) => setConfirmPassword(e.target.value)} ></input>
+                        <input className='form-control' id='confirmPassword' type={'password'} placeholder='Enter Confirm Password' onChange={(e) => setConfirmPassword(e.target.value)} ></input>
                     </div>
                     {
                       user.isSeller && (
                         <>
-                          <h2>Vendor</h2>
+                          <h2>Vendor Profile</h2>
                           <div>
                             <label htmlFor='sellerName'>Company Name</label>
-                            <input id='sellerName' type={'text'} placeholder="Enter Seller Name" value={sellerName} onChange={(e) => setSellerName(e.target.value)}></input>
+                            <input className='form-control' id='sellerName' type={'text'} placeholder="Enter Seller Name" value={sellerName} onChange={(e) => setSellerName(e.target.value)}></input>
                           </div>
                           <div>
                             <label htmlFor='sellerLogo'>Company Logo</label>
-                            <input id='sellerLogo' type={'text'} placeholder="Enter Seller Logo" value={sellerLogo} onChange={(e) => setSellerLogo(e.target.value)}></input>
+                            <input className='form-control' id='sellerLogo' type={'text'} placeholder="Enter Seller Logo" value={sellerLogo} onChange={(e) => setSellerLogo(e.target.value)}></input>
                           </div>
                           <div>
                             <label htmlFor='sellerDiscription'>Discription</label>
-                            <input id='sellerDiscription' type={'text'} placeholder="Enter Seller Discription" value={sellerDiscription} onChange={(e) => setSellerDiscription(e.target.value)}></input>
+                            <input className='form-control' id='sellerDiscription' type={'text'} placeholder="Enter Seller Discription" value={sellerDiscription} onChange={(e) => setSellerDiscription(e.target.value)}></input>
                           </div>
                         </>
                       )
                     }
                     <div>
                         <label/>
-                        <button className='primary' type='submit'>
+                        <button className='btn btn-primary  select-location btn-for-all' type='submit'>
                             update
                         </button>
                     </div>

@@ -42,7 +42,7 @@ export default function PaymentMethodScreen(props) {
               checked
               onChange={(e) => setPaymentMethod(e.target.value)}
             ></input>
-            <label htmlFor="paypal">PayPal</label>
+            <label htmlFor="paypal">JazzCash</label>
           </div>
         </div>
         <div>
@@ -60,7 +60,7 @@ export default function PaymentMethodScreen(props) {
         </div>
         <div>
           <label />
-          <button className="primary" type="submit">
+          <button className="btn btn-primary btn-md  btn-for-all" type="submit">
             Continue
           </button>
         </div>

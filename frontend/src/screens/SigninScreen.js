@@ -31,7 +31,7 @@ const redirect = search ? search.split("=")[1] : '/';
     }
   }, [search, redirect, userInfo]);
   return (
-    <div>
+    <div className='marginTop'>
       <form className="form" onSubmit={submitHandler}>
         <div>
           <h1 className=' font-weight-bold'>Sign In</h1>

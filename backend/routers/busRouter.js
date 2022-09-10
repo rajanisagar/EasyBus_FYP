@@ -91,7 +91,11 @@ busRouter.get('/:id', expressAsyncHandler( async(req,res) => {
 
 
 busRouter.post('/', isAuth, isSellerOrAdmin, expressAsyncHandler(async(req,res) => {
+    const buses = await Bus.find();
+    // console.log(buses.length)
+    // console.log(buses)
     const bus = new Bus({
+        ID: buses.length+1,
         operator:''+ Date.now(),
         seller: req.user._id,
         image: '',
@@ -207,7 +211,7 @@ busRouter.put('/:id', isAuth, isSellerOrAdmin, expressAsyncHandler(async(req, re
     }
 }))
 
-busRouter.delete('/:id', isAuth, isAdmin, expressAsyncHandler(async(req, res) => {
+busRouter.delete('/:id', isAuth, isSellerOrAdmin, expressAsyncHandler(async(req, res) => {
     const bus = await Bus.findById(req.params.id);
     if(bus){
         const deletedBus = await bus.remove()

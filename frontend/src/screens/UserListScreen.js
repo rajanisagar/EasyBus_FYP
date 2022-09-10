@@ -26,7 +26,7 @@ export default function UserListScreen(){
         }
     }
     return(
-        <div>
+        <div className='marginTop container'>
             <h1>Users</h1>
             {loadingDelete && <LoadingBox></LoadingBox> }
             {errorDelete && <MessageBox variant='danger'>{errorDelete}</MessageBox>}
@@ -40,11 +40,11 @@ export default function UserListScreen(){
                     <table className='table'>
                         <thead>
                             <tr>
-                            <th>ID</th>
+
                             <th>NAME</th>
                             <th>EMAIL</th>
                             <th>IS SELLER</th>
-                            <th>IS ADMIN</th>
+                            <th>COMPANY NAME</th>
                             <th>ACTIONS</th>
                             </tr>
                         </thead>
@@ -52,14 +52,15 @@ export default function UserListScreen(){
                             {
                                 users.map((user) => (
                                     <tr key={user._id}>
-                                        <td>{user._id}</td>
+                                        
                                         <td>{user.name}</td>
                                         <td>{user.email}</td>
                                         <td>{user.isSeller? 'YES': 'NO'}</td>
-                                        <td>{user.isAdmin? 'YES': 'NO'}</td>  
+                                        {/* <td>{user.isAdmin? 'YES': 'NO'}</td>   */}
+                                        <td>{user.isSeller? user.seller.name: 'NA'}</td>
                                         <td>
-                                            <button  type='button' className='small' onClick={() => navigate(`/user/${user._id}/edit`)}>EDIT</button>
-                                            <button type='button' className='small' onClick={() => deleteHandler(user)}>DELETE</button>
+                                            <button  type='button' className='btn btn btn-primary btn-sm' onClick={() => navigate(`/user/${user._id}/edit`)}>EDIT</button>
+                                            <button type='button' className='btn btn btn-danger btn-sm ml-1' onClick={() => deleteHandler(user)}>DELETE</button>
                                         </td>            
                                     </tr>
                                 ))

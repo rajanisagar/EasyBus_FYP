@@ -42,9 +42,9 @@ export default function PlaceOrderScreen(props) {
   }, [dispatch, order,navigate, success]);
 
   return (
-    <div>
+    <div className='userDetailsM  '>
       <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
-      <div className="row ">
+      <div className="row container">
         <div className="col-6">
           <ul>
             <li>
@@ -116,7 +116,7 @@ export default function PlaceOrderScreen(props) {
                 <button
                   type="button"
                   onClick={placeOrderHandler}
-                  className="primary block"
+                  className="btn btn-primary btn-md  btn-for-all"
                   disabled={bookSeats.bookedSeats.length === 0}
                 >
                   Checkout

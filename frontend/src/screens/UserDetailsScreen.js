@@ -31,7 +31,7 @@ function UserDetailsScreen(props) {
     navigate('/payment')
   };
   return (
-    <div>
+    <div className='userDetailsM'>
       <CheckoutSteps step1 step2></CheckoutSteps>
       <form className="form" onSubmit={submitHandler}>
         <div>
@@ -40,6 +40,7 @@ function UserDetailsScreen(props) {
         <div>
           <label htmlFor="fullName">Full Name</label>
           <input
+          className='form-control'
             type="text"
             id="fullName"
             placeholder="Enter full name"
@@ -49,22 +50,24 @@ function UserDetailsScreen(props) {
           ></input>
         </div>
         <div>
-          <label htmlFor="address">Address</label>
+          <label htmlFor="address">Mobile</label>
           <input
+          className='form-control'
             type="text"
             id="address"
-            placeholder="Enter address"
+            placeholder="Enter Phone Number"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             required
           ></input>
         </div>
         <div>
-          <label htmlFor="city">City</label>
+          <label htmlFor="city">CNIC</label>
           <input
+          className='form-control'
             type="text"
             id="city"
-            placeholder="Enter city"
+            placeholder="Enter CNIC Number"
             value={city}
             onChange={(e) => setCity(e.target.value)}
             required
@@ -73,6 +76,7 @@ function UserDetailsScreen(props) {
         <div>
           <label htmlFor="postalCode">Postal Code</label>
           <input
+           className='form-control'
             type="text"
             id="postalCode"
             placeholder="Enter postal code"
@@ -84,6 +88,7 @@ function UserDetailsScreen(props) {
         <div>
           <label htmlFor="country">Country</label>
           <input
+           className='form-control'
             type="text"
             id="country"
             placeholder="Enter country"
@@ -94,7 +99,7 @@ function UserDetailsScreen(props) {
         </div>
         <div>
           <label />
-          <button className="primary" type="submit">
+          <button className="btn btn btn-primary btn-sm" type="submit">
             Continue
           </button>
         </div>

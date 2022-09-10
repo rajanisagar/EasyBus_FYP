@@ -32,7 +32,8 @@ export default function BookedSeatsScreen(props) {
     }
 
     return (
-      <div className='row'>
+        <div className='marginTop container'>
+      <div className='row  '>
             <div className='col-6'>
                 <h1>Booked Seats</h1>
                 {
@@ -70,7 +71,7 @@ export default function BookedSeatsScreen(props) {
                                             <td>{item.to}</td>
                                             <td>{item.departureDate}</td>
                                             <td>
-                                                <button type='button' onClick={() => 
+                                                <button className='btn btn btn-danger btn-sm' type='button' onClick={() => 
                                                     removeFromBookedSeatsHandler(item.id)}>
                                                      Delete
                                                 </button>
@@ -89,17 +90,18 @@ export default function BookedSeatsScreen(props) {
                 }
 
             </div>
-            <div className='col-'>
+            
+            <div className='col-5 mt-5'>
                 <div className='card card-body'>
-                    <ul>
+                    <ul >
                         <li>
                             <h2>
                                 {/* seats === items */}
-                                Subtotal ({bookedSeats.reduce((a, c) => a + 1, 0)} Seats) : ${bookedSeats.reduce((a, c) => a + c.price * 1, 0)  } 
+                                Subtotal ({bookedSeats.reduce((a, c) => a + 1, 0)} Seats) : {bookedSeats.reduce((a, c) => a + c.price * 1, 0)  }.0 
                             </h2>
                         </li>
                         <li>
-                            <button type='button' onClick={checkOutHandler} className={"primary block"} disabled={bookedSeats.length === 0}> 
+                            <button type='button' onClick={checkOutHandler} className={"btn btn-primary btn-sm  btn-for-all"} disabled={bookedSeats.length === 0}> 
                             Proceed to Checkout
                             </button>
                         </li>
@@ -107,6 +109,8 @@ export default function BookedSeatsScreen(props) {
                 </div>
             </div>
       </div>
+        </div>
+      
     );
 }
 

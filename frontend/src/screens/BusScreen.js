@@ -60,14 +60,14 @@ export default function BusScreen(props){
     return(
        
 
-        <div>
+        <div className=' '>
         {loading? ( 
          <LoadingBox> </LoadingBox>
         ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
         ) : ( 
 
-          <div className="container-fluid bus-screen-details">
+          <div className="container-fluid bus-screen-details marginTop">
           <div 
             className="bus-item row bus-screen-detail "
             key = {bus._id}
@@ -225,7 +225,12 @@ export default function BusScreen(props){
       <div className=''>
       <Infolabel class="badge badge-dark">Seat Status</Infolabel>
 
-      <SeatAvailability />
+      <div className="row container-fluid mr-5">
+			<div className="mr-5 col-6 mt-3">Available: &ensp; <Available className="mleft "></Available>  </div>
+      
+			<div className="mr-5 col-6 mt-3">Booked: <Unavailable className="mleft "></Unavailable></div>
+			<div className=" mr-5 col-6 mt-3">Selected: <Available className="mleft bg-primary"></Available></div>
+		</div>
       
 
       </div>
@@ -321,15 +326,15 @@ const Seat = styled.input`
 
   &:checked {
     + span {
-      background: #AA001E;
-      color: #fff;
+      background: blue;
+      color: white;
       font-weight: 700;
     }
   }
 `;
 const SeatNumber = styled.span`
   border-radius: 2px;
-  color: #D80026;
+  color: black;
   font-family: var(--font-body);
   font-size: 14px;
   display: flex;
@@ -349,13 +354,13 @@ const Available = styled(SeatNumber)`
 
   &.checked,
   &:hover {
-    background: #AA001E;
+    background: blue;
     color: #fff;
     font-weight: 700;
   }
 `;
 const Unavailable = styled(SeatNumber)`
-  background: #FDBB01
+  background: grey;
   cursor: not-allowed;
   opacity: 0.4;
 `;

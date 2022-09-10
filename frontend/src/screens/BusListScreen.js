@@ -67,13 +67,13 @@ export default function BusListScreen(props) {
     dispatch(createBus());
   };
   return (
-    <div>
-      <div className="row">
-        <h1>Buses</h1>
-        <button type="button" className="primary" onClick={createHandler}>
+    <div className='marginTop container '>
+      {/* <div className="row "> */}
+        <h1 className='d-inline'>Buses</h1>
+        <button type="button" className="create-bus-btn d-inline ml-5 btn btn btn-primary btn-md" onClick={createHandler}>
           Create Bus
         </button>
-      </div>
+      
       {loadingDelete && <LoadingBox></LoadingBox>}
       {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
 
@@ -84,29 +84,36 @@ export default function BusListScreen(props) {
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
-        <table className="table">
+        <table className="table container mt-3">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>NAME</th>
+            <th>Bus ID</th>
+              <th>From</th>
+              <th>To</th>
+              <th>Departure Date</th>
+              <th>Bus Type</th>
               <th>PRICE</th>
-              <th>CATEGORY</th>
-              <th>BRAND</th>
+              <th>Seats Remaining</th>
+              
               <th>ACTIONS</th>
             </tr>
           </thead>
           <tbody>
             {buses.map((bus) => (
               <tr key={bus._id}>
-                <td>{bus._id}</td>
-                <td>{bus.operator}</td>
-                <td>{bus.price}</td>
+                <td>{bus.ID}</td>
+                <td>{bus.from}</td>
+                <td>{bus.to}</td>
+                <td>{bus.departureDate}</td>
                 <td>{bus.bus_type}</td>
-                <td>{bus.operator}</td>
+                <td>{bus.price}</td>
+                <td>{bus.seats_remaining}</td>
+                
+               
                 <td>
                   <button
                     type="button"
-                    className="small"
+                    className=" btn btn btn-primary btn-md"
                     onClick={() =>
                       navigate(`/bus/${bus._id}/edit`)
                     }
@@ -115,7 +122,8 @@ export default function BusListScreen(props) {
                   </button>
                   <button
                     type="button"
-                    className="small"
+                    className=" btn btn btn-danger btn-md ml-1"
+                  
                     onClick={() => deleteHandler(bus)}
                   >
                     Delete

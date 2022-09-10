@@ -1,4 +1,6 @@
 import mongoose  from "mongoose";
+import { nanoid } from 'nanoid';
+
 
 description:"Daewoo ."
 const busSchema = new mongoose.Schema({
@@ -7,6 +9,11 @@ const busSchema = new mongoose.Schema({
         require: true,
         unique: true
     },
+    ID: {
+        type: Number,
+        required: true,
+        unique: true
+      },
     seller: { type: mongoose.Schema.Types.ObjectID, ref: 'User' },
     bus_type:{
         type: String,

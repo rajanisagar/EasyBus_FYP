@@ -5,7 +5,7 @@
   "description": "FYP_EasyBus",
   "main": "index.js",
   "scripts": {
-    "build" : "cd frontend && npm install && npm run build",
+    "build": "cd frontend && npm install && npm run build",
     "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,11 +25,14 @@
     "express": "^4.17.3",
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.3.6"
+    "mongoose": "^6.3.6",
+    "nanoid": "^4.0.0"
   },
   "devDependencies": {
-    "eslint": "^8.15.0",
     "nodemon": "^2.0.15"
   },
-  "engines": {"node":"14.17.0", "npm": "6.14.13"}
+  "engines": {
+    "node": "14.17.0",
+    "npm": "6.14.13"
+  }
 }

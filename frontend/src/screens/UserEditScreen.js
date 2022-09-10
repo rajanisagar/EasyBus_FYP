@@ -51,10 +51,10 @@ export default function UserEditScreen(props) {
   };
   {console.log(isAdmin)}
   return (
-    <div>
+    <div className='marginTop'>
       <form className="form" onSubmit={submitHandler}>
         <div>
-          <h1>Edit User {name}</h1>
+          <h1>Edit User</h1>
           {loadingUpdate && <LoadingBox></LoadingBox>}
           {errorUpdate && (
             <MessageBox variant="danger">{errorUpdate}</MessageBox>
@@ -69,6 +69,7 @@ export default function UserEditScreen(props) {
             <div>
               <label htmlFor="name">Name</label>
               <input
+              className='form-control'
                 id="name"
                 type="text"
                 placeholder="Enter name"
@@ -79,6 +80,7 @@ export default function UserEditScreen(props) {
             <div>
               <label htmlFor="email">Email</label>
               <input
+              className='form-control'
                 id="email"
                 type="email"
                 placeholder="Enter email"
@@ -102,10 +104,10 @@ export default function UserEditScreen(props) {
                 type="checkbox"
                 checked={isAdmin}
                 onChange={(e) => setIsAdmin(e.target.checked)}
-              ></input>
+              >{console.log("isAdmin",isAdmin,"isSeller",isSeller)}</input>
             </div>
             <div>
-              <button type="submit" className="primary">
+              <button type="submit" className="btn btn-primary  select-location btn-for-all">
                 Update
               </button>
             </div>
