@@ -58,7 +58,7 @@ export default function Navbar() {
                     <Link to={'/buslist/seller'}>Buses</Link>
                 </li>
                 <li>
-                    <Link to={'/orderlist/seller'}>Orders</Link>
+                    <Link to={'/orderlist/seller'}>Reservations</Link>
                 </li>
 
             </ul>
@@ -73,9 +73,9 @@ export default function Navbar() {
           
             <Link className="nav-link me-lg-3" to={'#admin'}>Admin  </Link> 
             <ul className='dropdown-content'>
-                <li>
+                {/* <li>
                     <Link to={'/dashboard'}>Dashboard</Link>
-                </li>
+                </li> */}
                 {/* <li>
                     <Link to={'/buslist'}>Buses</Link>
                 </li>
@@ -109,7 +109,10 @@ export default function Navbar() {
                         <Link  to={'/profile'}>User Profile</Link>
                     </li>
                     <li>
-                        <Link to="/orderhistory">Order History</Link>
+                        <Link to="/bookedSeats">Booked Seats</Link>
+                    </li>
+                    <li>
+                        <Link to="/orderhistory">Reserved Seats</Link>
                     </li>
                     <li>
                         <Link to={'#signout'} onClick={signoutHandler}>Sign Out</Link>

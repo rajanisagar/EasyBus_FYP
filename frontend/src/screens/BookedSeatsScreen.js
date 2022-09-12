@@ -93,7 +93,7 @@ export default function BookedSeatsScreen(props) {
             
             <div className='col-5 mt-5'>
                 <div className='card card-body'>
-                    <ul >
+                    <ul style={{listStyle: "none"}}>
                         <li>
                             <h2>
                                 {/* seats === items */}

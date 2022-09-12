@@ -51,8 +51,8 @@ export default function UserEditScreen(props) {
   };
   {console.log(isAdmin)}
   return (
-    <div className='marginTop'>
-      <form className="form" onSubmit={submitHandler}>
+    <div className='marginTop  row mt-5 pt-5'>
+      <form className="orm-horizontal col-6" onSubmit={submitHandler}>
         <div>
           <h1>Edit User</h1>
           {loadingUpdate && <LoadingBox></LoadingBox>}
@@ -66,7 +66,7 @@ export default function UserEditScreen(props) {
           <MessageBox variant="danger">{error}</MessageBox>
         ) : (
           <>
-            <div>
+            <div className='mt-3'>
               <label htmlFor="name">Name</label>
               <input
               className='form-control'
@@ -77,7 +77,7 @@ export default function UserEditScreen(props) {
                 onChange={(e) => setName(e.target.value)}
               ></input>
             </div>
-            <div>
+            <div className='mt-3'>
               <label htmlFor="email">Email</label>
               <input
               className='form-control'
@@ -88,16 +88,21 @@ export default function UserEditScreen(props) {
                 onChange={(e) => setEmail(e.target.value)}
               ></input>
             </div>
-            <div>
-              <label htmlFor="isSeller">Is Seller</label>
+            <div className='mt-3'>
+            <label  htmlFor='isSeller'>Is Seller </label>
               <input
+               class="form-check-input ml-1 "
                 id="isSeller"
                 type="checkbox"
                 checked={isSeller}
                 onChange={(e) => setIsSeller(e.target.checked)}
-              ></input>
+                // style={{display:"inline-block;"}}
+              />
+             
             </div>
-            <div>
+
+            
+            {/* <div>
               <label htmlFor="isAdmin">Is Admin</label>
               <input
                 id="isAdmin"
@@ -105,15 +110,16 @@ export default function UserEditScreen(props) {
                 checked={isAdmin}
                 onChange={(e) => setIsAdmin(e.target.checked)}
               >{console.log("isAdmin",isAdmin,"isSeller",isSeller)}</input>
-            </div>
-            <div>
-              <button type="submit" className="btn btn-primary  select-location btn-for-all">
+            </div> */}
+            <div className='d-grid gap-2 mt-3'>
+              <button type="submit" className="btn btn-primary  ">
                 Update
               </button>
             </div>
           </>
         )}
       </form>
+      
     </div>
   );
 }

@@ -85,7 +85,7 @@ function UserDetailsScreen(props) {
             required
           ></input>
         </div>
-        <div>
+        {/* <div>
           <label htmlFor="country">Country</label>
           <input
            className='form-control'
@@ -96,7 +96,7 @@ function UserDetailsScreen(props) {
             onChange={(e) => setCountry(e.target.value)}
             required
           ></input>
-        </div>
+        </div> */}
         <div>
           <label />
           <button className="btn btn btn-primary btn-sm" type="submit">

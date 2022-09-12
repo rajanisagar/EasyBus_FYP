@@ -38,8 +38,8 @@ export default function OrderListScreen(props) {
     }
   };
   return (
-    <div>
-      <h1>Orders</h1>
+    <div className='marginTop container'>
+      <h1>Reservations List</h1>
       {loadingDelete && <LoadingBox></LoadingBox>}
       {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
       {loading ? (
@@ -55,7 +55,7 @@ export default function OrderListScreen(props) {
               <th>DATE</th>
               <th>TOTAL</th>
               <th>PAID</th>
-              <th>DELIVERED</th>
+              {/* <th>DELIVERED</th> */}
               <th>ACTIONS</th>
             </tr>
           </thead>
@@ -67,22 +67,22 @@ export default function OrderListScreen(props) {
                 <td>{order.createdAt.substring(0, 10)}</td>
                 <td>{order.totalPrice.toFixed(2)}</td>
                 <td>{order.isPaid ? order.paidAt.substring(0, 10) : 'No'}</td>
-                <td>
+                {/* <td>
                   {order.isDelivered
                     ? order.deliveredAt.substring(0, 10)
                     : 'No'}
-                </td>
+                </td> */}
                 <td>
                   <button
                     type="button"
-                    className="small"
+                    className="btn btn-primary btn-sm"
                     onClick={() => {
                       navigate(`/order/${order._id}`);
                     }}
                   >
                     Details
                   </button>
-                  <button type='button' className='small' onClick={() => deleteHandler(order)}>Delete</button>
+                  {/* <button type='button' className='small' onClick={() => deleteHandler(order)}>Delete</button> */}
                 </td>
               </tr>
             ))}

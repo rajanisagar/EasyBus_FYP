@@ -10,7 +10,7 @@ import orderRouter from './routers/orderRouter.js';
 
 dotenv.config()
 const app = express();
-const DB = 'mongodb+srv://easybus:easybus@cluster0.kryhcui.mongodb.net/easybus?retryWrites=true&w=majority'
+const DB = 'mongodb://localhost:27017/easybus'
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
 mongoose.connect(DB, {

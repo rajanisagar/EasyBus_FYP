@@ -1,7 +1,8 @@
+import Axios from "axios";
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
-import { detailsOrder } from '../actions/orderActions';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { deleteOrder, detailsOrder } from '../actions/orderActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 
@@ -13,37 +14,59 @@ export default function OrderScreen(props) {
     console.log(id)
   const orderDetails = useSelector((state) => state.orderDetails);
   const { order, loading, error } = orderDetails;
+  const userSignin = useSelector((state) => state.userSignin)
+    const  {userInfo} = userSignin 
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(detailsOrder(orderId));
   }, [dispatch, orderId]);
+  const navigate = useNavigate();
+
+  const cancelReservationHandler = async () => {
+    if (window.confirm('Are you sure to delete?')) {
+      navigate('/orderhistory')
+      
+      await Axios.get(`/api/buses/cancelreservation/${orderId}`, {
+        headers: {Authorization: `Bearer ${userInfo.token}`}
+      })
+      
+   
+     
+    }
+    
+  }
   return loading ? (
     <LoadingBox></LoadingBox>
   ) : error ? (
     <MessageBox variant="danger">{error}</MessageBox>
   ) : (
-    <div>
-      <h1>Order {order._id}</h1>
+    <div className='marginTop container'>
+      <h1>Reservation</h1>
       <div className="row top">
-        <div className="col-2">
-          <ul>
+        <div className="col-6">
+          <ul style={{listStyle: "none"}}>
             <li>
               <div className="card card-body">
-                <h2>Shipping</h2>
+                <h2>User Details</h2>
                 <p>
-                  <strong>Name:</strong> {order.shippingAddress.fullName} <br />
-                  <strong>Address: </strong> {order.shippingAddress.address},
-                  {order.shippingAddress.city},{' '}
-                  {order.shippingAddress.postalCode},
-                  {order.shippingAddress.country}
+                 
+     
+                  <strong>Name:</strong> {order.userDetails.fullName} <br />
+                  <strong>Phone: </strong> {order.userDetails.address} <br />
+                  <strong>CNIC: </strong> 
+                  {order.userDetails.city}, <br/>
+                  <strong>Postal Code: </strong> {order.userDetails.postalCode}<br/>
+     
+           
                 </p>
-                {order.isDelivered ? (
+                {/* {order.isDelivered ? (
                   <MessageBox variant="success">
                     Delivered at {order.deliveredAt}
                   </MessageBox>
                 ) : (
                   <MessageBox variant="danger">Not Delivered</MessageBox>
-                )}
+                )} */}
               </div>
             </li>
             <li>
@@ -64,26 +87,32 @@ export default function OrderScreen(props) {
             <li>
               <div className="card card-body">
                 <h2>Order Items</h2>
-                <ul>
+                <ul  className="list-group list-group-flush">
                   {order.orderItems.map((item) => (
-                    <li key={item.bus}>
+                    <li class="list-group-item" key={item.id}>
                       <div className="row">
-                        <div>
-                          <img
+                        
+                         {item.seatId}
+                         &ensp;
+                          {/* <img
                             src={item.image}
-                            alt={item.name}
+                            alt={item.seatId}
                             className="small"
-                          ></img>
-                        </div>
-                        <div className="min-30">
-                          <Link to={`/bus/${item.bus}`}>
-                            {item.name}
-                          </Link>
-                        </div>
-
-                        <div>
-                          {item.qty} x ${item.price} = ${item.qty * item.price}
-                        </div>
+                          ></img> */}
+                        
+                        
+                            
+                          
+                            {/* {item.bus.seller.seller.name} */}
+                          
+                            &ensp;
+                            {/* {console.log("vvv",item.bus.from)} */}
+                            {item.bus.from}&ensp;
+                            {/* {"==>"} &ensp; */}
+                            {item.to} &ensp; 
+                           PKR {item.price}
+                           
+                        
                       </div>
                     </li>
                   ))}
@@ -92,41 +121,34 @@ export default function OrderScreen(props) {
             </li>
           </ul>
         </div>
-        <div className="col-1">
+        <div className="col-6">
           <div className="card card-body">
-            <ul>
+          <ul style={{listStyle: "none"}}>
               <li>
-                <h2>Order Summary</h2>
+                <h2>Summary</h2>
               </li>
+            
               <li>
-                <div className="row">
-                  <div>Items</div>
-                  <div>${order.itemsPrice.toFixed(2)}</div>
-                </div>
-              </li>
-              <li>
-                <div className="row">
-                  <div>Shipping</div>
-                  <div>${order.shippingPrice.toFixed(2)}</div>
-                </div>
-              </li>
-              <li>
-                <div className="row">
-                  <div>Tax</div>
-                  <div>${order.taxPrice.toFixed(2)}</div>
-                </div>
-              </li>
-              <li>
-                <div className="row">
-                  <div>
-                    <strong> Order Total</strong>
-                  </div>
-                  <div>
-                    <strong>${order.totalPrice.toFixed(2)}</strong>
-                  </div>
-                </div>
-              </li>
+                            <h2>
+                                {/* {console.log(bookSeats.totalPrice)} */}
+                                Total ({order.orderItems.reduce((a, c) => a + 1, 0)} Seats) : PKR {order.orderItems.reduce((a, c) => a + c.price * 1, 0)  } 
+                            </h2>
+                        </li>
+                        <li>
+                        <button
+                  type="button"
+                  onClick={cancelReservationHandler}
+                  className="btn btn-danger btn-md  btn-for-all"
+                  // disabled={bookSeats.bookedSeats.length === 0}
+                >
+                  Cancel Reservation
+                </button>
+                          </li>
+
+              {loading && <LoadingBox></LoadingBox>}
+              {error && <MessageBox variant="danger">{error}</MessageBox>}
             </ul>
+          
           </div>
         </div>
       </div>

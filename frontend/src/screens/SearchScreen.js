@@ -731,7 +731,7 @@ export default function SearchScreen(props) {
                       
        
                            <ul className="list-menu">
-                           {ratings.map((r) => (
+                           {/* {ratings.map((r) => (
           <li key={r.name}>
             <Link
               to={getFilterUrl({ rating: r.rating })}
@@ -740,7 +740,7 @@ export default function SearchScreen(props) {
               <Ratting caption={' & up'} rating={r.rating}></Ratting>
             </Link>
           </li>
-        ))}
+        ))} */}
                            </ul>
            
                        </div> 

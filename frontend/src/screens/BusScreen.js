@@ -235,7 +235,8 @@ export default function BusScreen(props){
 
       </div>
       <div className="row">
-      <Button className="btn btn-primary book_btn_bus_screen" onClick={bookSeatHandler} disabled={Object.keys(seat).length === 0}>Book</Button>
+        {Object.keys(seat).length !== 0 ? <Button className="btn btn-primary book_btn_bus_screen" onClick={bookSeatHandler} disabled={Object.keys(seat).length === 0}>Book</Button>: <Button className="btn btn-primary disabled " onClick={bookSeatHandler} disabled={Object.keys(seat).length === 0}>Book</Button>}
+      
   
     </div>
 
@@ -289,8 +290,8 @@ border: 2px solid  #DEE2E6;
   
 const Wrapper = styled.ol`
   display: grid;
-  grid-template-rows: repeat(10, 30px);
-  grid-template-columns: 30px 30px 60px 30px 30px 30px;
+  grid-template-rows: repeat(20, 30px);
+  grid-template-columns: 30px  60px 30px 30px;
   gap: 12px 10px;
   background: #fff;
   border: 1px solid #AA001E;
@@ -303,7 +304,7 @@ const Wrapper = styled.ol`
   padding-bottom: 15px;
   padding-left: 15px;
    height: 450px;
-    min-width: 300px;
+    min-width: 220px;
     border-radius: 10px;
 
   border: 2px solid  #DEE2E6;

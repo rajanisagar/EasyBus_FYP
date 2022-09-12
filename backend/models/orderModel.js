@@ -6,7 +6,7 @@ const orderSchema = new mongoose.Schema(
     orderItems: [
       {
        
-      
+        seller: { type: mongoose.Schema.Types.ObjectID, ref: 'User' },
         seatId: { type: String, required: true },
         price: { type: Number },
         // buss === product
@@ -17,7 +17,7 @@ const orderSchema = new mongoose.Schema(
         },
       },
     ],
-    shippingAddress: {
+    userDetails: {
       fullName: { type: String },
       address: { type: String },
       city: { type: String },
@@ -30,7 +30,7 @@ const orderSchema = new mongoose.Schema(
     // taxPrice: { type: Number },
     totalPrice: { type: Number },
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    seller: { type: mongoose.Schema.Types.ObjectID, ref: 'User' },
+   
     isPaid: { type: Boolean, default: false },
     paidAt: { type: Date },
     // isDelivered: { type: Boolean, default: false },

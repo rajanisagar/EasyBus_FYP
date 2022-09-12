@@ -32,6 +32,8 @@ export default function PlaceOrderScreen(props) {
   bookSeats.totalPrice = bookSeats.itemsPrice ;
   const dispatch = useDispatch();
   const placeOrderHandler = () => {
+    console.log(bookSeats.bookedSeats)
+    
     dispatch(createOrder({ ...bookSeats, orderItems: bookSeats.bookedSeats }));
   };
   useEffect(() => {
@@ -46,15 +48,17 @@ export default function PlaceOrderScreen(props) {
       <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
       <div className="row container">
         <div className="col-6">
-          <ul>
+          <ul style={{listStyle: "none"}}>
             <li>
               <div className="card card-body">
                 <h2>User Details</h2>
                 <p>
                   <strong>Name:</strong> {bookSeats.shippingAddress.fullName} <br />
-                  <strong>Address: </strong> {bookSeats.shippingAddress.address},
-                  {bookSeats.shippingAddress.city}, {bookSeats.shippingAddress.postalCode}
-                  ,{bookSeats.shippingAddress.country}
+                  <strong>Phone: </strong> {bookSeats.shippingAddress.address} <br />
+                  <strong>CNIC: </strong> 
+                  {bookSeats.shippingAddress.city}, <br/>
+                  <strong>Postal Code: </strong> {bookSeats.shippingAddress.postalCode}<br/>
+                  {/* <strong>City: </strong> {bookSeats.shippingAddress.country} */}
                 </p>
               </div>
             </li>
@@ -69,28 +73,31 @@ export default function PlaceOrderScreen(props) {
             <li>
               <div className="card card-body">
                 <h2>Seats</h2>
-                <ul>
+                <ul  className="list-group list-group-flush">
                   {bookSeats.bookedSeats.map((item) => (
-                    <li key={item.id}>
+                    <li class="list-group-item" key={item.id}>
                       <div className="row">
-                        <div>
+                        
                          {item.seatId}
+                         &ensp;
                           {/* <img
                             src={item.image}
                             alt={item.seatId}
                             className="small"
                           ></img> */}
-                        </div>
-                        <div className="min-30">
+                        
+                        
                             
-                          <Link to={`/bus/${item.bus}`}>
+                          
                             {item.seller.seller.name}
-                          </Link>
-                        </div>
-
-                        <div>
+                          
+                            &ensp;
+                            {item.from}&ensp;
+                            {"==>"} &ensp;
+                            {item.to} &ensp; 
                            PKR {item.price}
-                        </div>
+                           
+                        
                       </div>
                     </li>
                   ))}
@@ -101,7 +108,7 @@ export default function PlaceOrderScreen(props) {
         </div>
         <div className="col-6">
           <div className="card card-body">
-            <ul>
+            <ul style={{listStyle: "none"}}>
               <li>
                 <h2>Summary</h2>
               </li>
