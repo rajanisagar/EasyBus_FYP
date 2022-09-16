@@ -36,6 +36,19 @@ export default function BusScreen(props){
 		totalSeats: 0,
 		seatNumbers: []
 	})
+  const [checked, setChecked] = useState([]);
+  const handleCheck = (event) => {
+    console.log(event.target)
+    let updatedList = [...checked];
+    if (event.target.checked) {
+      updatedList = [...checked, event.target.value];
+    } else {
+      updatedList.splice(checked.indexOf(event.target.value), 1);
+    }
+    
+    setChecked(updatedList);
+  };
+ 
     const navigate  = useNavigate();
     const dispatch  = useDispatch();
     const  {id}  = useParams();
@@ -53,7 +66,7 @@ export default function BusScreen(props){
     const bookSeatHandler = () => {
         // cart
         console.log("SEATS: ", seat);
-        dispatch(bookSeat(id, seat));
+        dispatch(bookSeat(id, checked));
         navigate(`/bookedSeats/${id}`)
     }
 
@@ -180,7 +193,7 @@ export default function BusScreen(props){
       
         {
         bus && bus.seats.length > 0 ? (
-          bus.seats.map((seat) => {
+          bus.seats.map((seat, index) => {
             // console.log(seat.id);
             return (
               <SeatWrapper key={`seat-${seat.id}`}>
@@ -188,22 +201,34 @@ export default function BusScreen(props){
                   {seat.isAvailable ? (
                     <>
                       <Seat
-                        type="radio"
+                        type="checkbox"
                         name="seat"
-                        onChange={() => {
+                        
+                        // onChange={() => {
                          
-                          console.log("SID: ", seat.id);
-                          setSid(seat.id);
-                          setSeat({seatId: seat.id,uid:seat._id});
+                        //   console.log("SID: ", seat.id);
+                        //   setSid(seat.id);
+                        //   setSeat({seatId: seat.id,uid:seat._id});
                           
-                          // setSeatId(seat.id);
-                          // let updatedValue = [];
-                          // updatedValue = { seatId: seat.id };
-                          // setReservationInfo((reservationInfo) => ({
-                          //   ...reservationInfo,
-                          //   ...updatedValue,
-                          // }));
-                          // console.log("INFO: ", reservationInfo);
+                        //   // setSeatId(seat.id);
+                        //   // let updatedValue = [];
+                        //   // updatedValue = { seatId: seat.id };
+                        //   // setReservationInfo((reservationInfo) => ({
+                        //   //   ...reservationInfo,
+                        //   //   ...updatedValue,
+                        //   // }));
+                        //   // console.log("INFO: ", reservationInfo);
+                        // }}
+                        onChange={(e) =>{
+                          let updatedList = [...checked];
+                          if (e.target.checked) {
+                            updatedList = [...checked,{seatId: seat.id,uid:seat._id}];
+                          } else {
+                            updatedList.splice(checked.indexOf(e.target.value), 1);
+                          }
+                          console.log(updatedList)
+                          
+                          setChecked(updatedList);
                         }}
                       />
                       <Available>{seat.id}</Available>
@@ -226,16 +251,16 @@ export default function BusScreen(props){
       <Infolabel class="badge badge-dark">Seat Status</Infolabel>
 
       <div className="row container-fluid mr-5">
-			<div className="mr-5 col-6 mt-3">Available: &ensp; <Available className="mleft "></Available>  </div>
+			<div className="mr-5 col-6 mt-2">Available: &ensp; &ensp; &ensp; <Available className="mleft avail "></Available>  </div>
       
-			<div className="mr-5 col-6 mt-3">Booked: <Unavailable className="mleft "></Unavailable></div>
+			<div className="mr-5 col-6 ">Booked: <Unavailable className="mleft "></Unavailable></div>
 			<div className=" mr-5 col-6 mt-3">Selected: <Available className="mleft bg-primary"></Available></div>
 		</div>
       
 
       </div>
       <div className="row">
-        {Object.keys(seat).length !== 0 ? <Button className="btn btn-primary book_btn_bus_screen" onClick={bookSeatHandler} disabled={Object.keys(seat).length === 0}>Book</Button>: <Button className="btn btn-primary disabled " onClick={bookSeatHandler} disabled={Object.keys(seat).length === 0}>Book</Button>}
+        {checked.length !== 0 ? <Button className="btn btn-primary book_btn_bus_screen" onClick={bookSeatHandler} disabled={checked.length === 0}>Book</Button>: <Button className="btn btn-primary disabled " onClick={bookSeatHandler} disabled={checked.length === 0}>Book</Button>}
       
   
     </div>

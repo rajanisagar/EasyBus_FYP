@@ -28,6 +28,8 @@ import { useEffect } from 'react';
 import { listBusCategories } from './actions/busActions';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import VendorRegisterScreen from './screens/VendorRegisterScreen';
+import VendorListScreen from './screens/VendorListScreen';
 function App() { 
 
 
@@ -56,8 +58,12 @@ function App() {
     </aside> */}
     <main>
     
+
+
        
         <Routes>
+        
+           <Route path="/vendorregister" element={<VendorRegisterScreen/>} ></Route>
             <Route path="/seller/:id" element={<SellerScreen/>} ></Route>
             <Route path="/bookedSeats/:id" element={<BookedSeatsScreen/>} ></Route>
             <Route path="/bookedSeats" element={<BookedSeatsScreen/>} ></Route>
@@ -104,6 +110,10 @@ function App() {
             <Route exact path='/userlist' element={<AdminRoute/>}>
                 <Route exact path='/userlist' element={<UserListScreen/>}/>
             </Route>
+            <Route exact path='/vendorlist' element={<AdminRoute/>}>
+                <Route exact path='/vendorlist' element={<VendorListScreen/>}/>
+            </Route>
+
             <Route exact path='/user/:id/edit' element={<AdminRoute/>}>
                 <Route exact path='/user/:id/edit' element={<UserEditScreen/>}/>
             </Route>

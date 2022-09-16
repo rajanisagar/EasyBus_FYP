@@ -83,8 +83,12 @@ export default function Navbar() {
                     <Link to={'/orderlist'}>Orders</Link>
                 </li> */}
                 <li>
+                    <Link to={'/vendorlist'}>Vendors</Link>
+                </li>
+                <li>
                     <Link to={'/userlist'}>Users</Link>
                 </li>
+
             </ul>
            
         </div>
@@ -122,13 +126,22 @@ export default function Navbar() {
                    
         ) : 
         (
+          <>
+        
+          <Link className="mr-4"  to={'/vendorregister'}>Become a Vendor</Link>
+         
           
-          // <button onClick={() => navigate('/signin')}>Sign In</button>
+          
+        
+          
+          {/* // <button onClick={() => navigate('/signin')}>Sign In</button> */}
           <button className="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" onClick={() => navigate('/signin')}>
           <span className="d-flex align-items-center">
               <span className="small">SIGN IN</span>
           </span>
       </button>
+      </>
+      
         )
     }
           </li>

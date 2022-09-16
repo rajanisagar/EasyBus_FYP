@@ -5,9 +5,11 @@ import { register } from '../actions/userActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 
-export default function RegisterScreen(props) {
+export default function VendorRegisterScreen(props) {
   const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
+  const [cnic, setCnic] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
@@ -24,11 +26,12 @@ const redirect = search ? search.split("=")[1] : '/';
 
   const dispatch = useDispatch();
   const submitHandler = (e) => {
+    console.log("hello  ")
     e.preventDefault();
     if(password !== confirmPassword){
       alert('password and Confirm Password does not match ')
     } else{
-      dispatch(register(name, email, password));
+      dispatch(register(name,phone,cnic, email, password));
     }
    
   };
@@ -39,10 +42,13 @@ const redirect = search ? search.split("=")[1] : '/';
     }
   }, [search, redirect, userInfo]);
   return (
-    <div>
+    <div className='marginTop'>
+        
+       
       <form className="form" onSubmit={submitHandler}>
         <div>
-          <h1 className='font-weight-bold'>Create Account</h1>
+        <h1>Want to Be A Vendor </h1>
+        <h5>Please Fill out Form to Register!</h5>
         </div>
         {loading && <LoadingBox></LoadingBox>}
         {error && <MessageBox variant="danger">{error}</MessageBox>}
@@ -58,8 +64,47 @@ const redirect = search ? search.split("=")[1] : '/';
           ></input>
         </div>
         <div>
+          <label htmlFor="phone">Phone <span className='text-danger'>*</span></label>
+          <input
+            onKeyPress={(event) => {
+              console.log(event.key)
+              if (!/[0-9]/.test(event.key ) && event.key !== '+') {
+                
+                event.preventDefault();
+              }
+
+            }}
+            pattern="[+][0-9]{12}"
+           className='form-control'
+            type="tel"
+            id="phone"
+            placeholder="+923000000000"
+            required
+            onChange={(e) => setPhone(e.target.value)}
+          ></input>
+        </div>
+        <div>
+          <label htmlFor="cnic">CNIC <span className='text-danger'>*</span></label>
+          <input
+                 onKeyPress={(event) => {
+                  console.log(event.key)
+                  if (!/[0-9]/.test(event.key ) && event.key !== '-') {
+                    
+                    event.preventDefault();
+                  }
+    
+                }}
+          pattern="^[0-9]{5}-[0-9]{7}-[0-9]{1}$"
+           className='form-control'
+            type="tel"
+            id="cnic"
+            placeholder="00000-0000000-0"
+            required
+            onChange={(e) => setCnic(e.target.value)}
+          ></input>
+        </div>
+        <div>
           <label htmlFor="email">Email Address <span className='text-danger'>*</span></label>
-          
           <input
            className='form-control'
             type="email"
@@ -81,7 +126,7 @@ const redirect = search ? search.split("=")[1] : '/';
           ></input>
         </div>
         <div>
-          <label htmlFor="confirmPassword">Confirm Password < span className='text-danger'>*</span></label>
+          <label htmlFor="confirmPassword">Confirm Password <span className='text-danger'>*</span></label>
           <input
            className='form-control'
             type="password"
