@@ -87,7 +87,7 @@ export default function BusEditScreen(){
                 :
                 <>
                 <div>
-                     <label htmlFor="">Select Departure</label>
+                     <label htmlFor="">Select Departure <span className='text-danger'>*</span></label>
       <select required onChange={(e) => setFrom(e.target.value)} class="custom-select  select-location ">
       <option  value="" >From</option>
       <option value="Ahmed Nager Chatha">Ahmed Nager Chatha</option>
@@ -335,7 +335,7 @@ export default function BusEditScreen(){
       </div>
 
       <div >
-      <label htmlFor="">Select Arrival</label>
+      <label htmlFor="">Select Arrival <span className='text-danger'>*</span></label>
 <select required onChange={(e) => setTo(e.target.value)} class="custom-select select-location">
   <option     value="">To</option>
   <option value="Ahmed Nager Chatha">Ahmed Nager Chatha</option>
@@ -582,7 +582,7 @@ export default function BusEditScreen(){
   </select>
       </div>
       <div >
-      <label htmlFor="">Departure Date</label>
+      <label htmlFor="">Departure Date <span className='text-danger'>*</span></label>
 <DatePicker  className="custom-select select-location" placeholder='778678' onChange={(date) => setDepartureDate(date)} />
 
       </div>
@@ -593,8 +593,12 @@ export default function BusEditScreen(){
                     </div>
                     
                     <div>
-                        <label htmlFor='price'>Price</label>
-                        <input className='form-control' id='price' type={'text'} placeholder='Enter Price' value={price} onChange={(e) => setPrice(e.target.value)}>
+                        <label htmlFor='price'>Price <span className='text-danger'>*</span></label>
+                        <input required className='form-control' id='price' type={'text'} placeholder='Enter Price' value={price}  onKeyPress={(event) => {
+        if (!/[0-9]/.test(event.key)) {
+          event.preventDefault();
+        }
+      }} onChange={(e) => setPrice(e.target.value)}>
                         </input>
                     </div>
                     {/* <div>
@@ -605,7 +609,7 @@ export default function BusEditScreen(){
                     <div>
                  
   
-                        <label htmlFor='bus_type'>Bus Type</label>
+                        <label htmlFor='bus_type'>Bus Type <span className='text-danger'>*</span></label>
                         <select required  id='bus_type' onChange={(e) => setbus_type(e.target.value)} class="custom-select  select-location ">
                         <option  value="" >Bus type</option>
                         <option value="Prmium">Premium</option>

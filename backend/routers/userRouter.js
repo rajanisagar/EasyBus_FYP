@@ -38,6 +38,9 @@ userRouter.post('/register', expressAsyncHandler(async(req, res) => {
     const user = new User({
         name: req.body.name,
         email: req.body.email,
+        phone: req.body.phone || "",
+        cnic: req.body.cnic  || "",
+        isSeller: req.body.cnic ? true : false,
         password: bcrypt.hashSync(req.body.password, 8),
     })
     const creattedUser = await user.save()
@@ -46,7 +49,7 @@ userRouter.post('/register', expressAsyncHandler(async(req, res) => {
         name: creattedUser.name,
         email: creattedUser.email,
         isAdmin: creattedUser.isAdmin,
-        isSeller: user.isSeller,
+        isSeller: creattedUser.isSeller,
         token: generateToken(creattedUser)
     })
 })

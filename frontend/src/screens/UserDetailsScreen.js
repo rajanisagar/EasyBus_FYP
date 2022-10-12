@@ -38,7 +38,7 @@ function UserDetailsScreen(props) {
           <h1>User Details</h1>
         </div>
         <div>
-          <label htmlFor="fullName">Full Name</label>
+          <label htmlFor="fullName">Full Name  <span className='text-danger'>*</span></label>
           <input
           className='form-control'
             type="text"
@@ -50,24 +50,42 @@ function UserDetailsScreen(props) {
           ></input>
         </div>
         <div>
-          <label htmlFor="address">Mobile</label>
+          <label htmlFor="address">Mobile <span className='text-danger'>*</span></label>
           <input
+                 onKeyPress={(event) => {
+                  console.log(event.key)
+                  if (!/[0-9]/.test(event.key ) && event.key !== '+') {
+                    
+                    event.preventDefault();
+                  }
+    
+                }}
+                pattern="[+][0-9]{12}"
           className='form-control'
             type="text"
             id="address"
-            placeholder="Enter Phone Number"
+            placeholder="920000000000"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             required
           ></input>
         </div>
         <div>
-          <label htmlFor="city">CNIC</label>
+          <label htmlFor="city">CNIC <span className='text-danger'>*</span></label>
           <input
+               onKeyPress={(event) => {
+                console.log(event.key)
+                if (!/[0-9]/.test(event.key ) && event.key !== '-') {
+                  
+                  event.preventDefault();
+                }
+  
+              }}
+        pattern="^[0-9]{5}-[0-9]{7}-[0-9]{1}$"
           className='form-control'
             type="text"
             id="city"
-            placeholder="Enter CNIC Number"
+            placeholder="00000-0000000-0"
             value={city}
             onChange={(e) => setCity(e.target.value)}
             required
@@ -76,10 +94,19 @@ function UserDetailsScreen(props) {
         <div>
           <label htmlFor="postalCode">Postal Code</label>
           <input
+                 onKeyPress={(event) => {
+                  console.log(event.key)
+                  if (!/[0-9]/.test(event.key ) ) {
+                    
+                    event.preventDefault();
+                  }
+    
+                }}
+          pattern="^[0-9]{5}$"
            className='form-control'
             type="text"
             id="postalCode"
-            placeholder="Enter postal code"
+            placeholder="12345"
             value={postalCode}
             onChange={(e) => setPostalCode(e.target.value)}
             required

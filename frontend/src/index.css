@@ -381,6 +381,11 @@ font-size: 0.9rem;
 
 .mleft{
   margin-left: 5rem;
+  cursor:default!important;
+}
+.avail:hover {
+  background:white !important;
+
 }
 .btn-back >p     {
 

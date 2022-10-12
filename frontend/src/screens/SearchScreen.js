@@ -887,6 +887,7 @@ export default function SearchScreen(props) {
           <MessageBox>No Bus Found</MessageBox>
         )}
         <div >
+    {console.log(buses)}
           {buses.map((bus) => (
 //             <div class="card mt-3"  key = {bus._id}>
 //   <h5 class="card-header">{bus.seller.seller.name}</h5>
