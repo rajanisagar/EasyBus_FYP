@@ -5,7 +5,8 @@ import { Link, useNavigate, useParams  } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-import { detailsBuses } from '../actions/busActions';
+
+import { detailsBuses,createReview } from '../actions/busActions';
 import angelleft from "./angle-left.svg"
 
 import MovieSelector from "../components/MovieSelector"
@@ -20,6 +21,7 @@ import { bookSeat } from '../actions/bookSeatsActions';
 
 
 import styled from "styled-components";
+import { BUS_REVIEW_CREATE_RESET } from '../constants/busConstants';
 
 // Prduction screen
 export default function BusScreen(props){
@@ -46,32 +48,64 @@ export default function BusScreen(props){
     const busDetails = useSelector((state) => state.busDetails);
     const {loading, error, bus} = busDetails;
     const [seat, setSeat] = useState({});
+    const userSignin = useSelector((state) => state.userSignin);
+    const { userInfo } = userSignin;
+  
+    const busReviewCreate = useSelector((state) => state.busReviewCreate);
+    const {
+      loading: loadingReviewCreate,
+      error: errorReviewCreate,
+      success: successReviewCreate,
+    } = busReviewCreate;
+  
+    const [rating, setRating] = useState(0);
+    const [comment, setComment] = useState('');
+
     useEffect(() =>{
+      if (successReviewCreate) {
+        window.alert('Review Submitted Successfully');
+        setRating('');
+        setComment('');
+        dispatch({ type: BUS_REVIEW_CREATE_RESET });
+      }
         // productid
         dispatch(detailsBuses(id));
-    }, [dispatch, id]);
+    }, [dispatch, id, successReviewCreate]);
     const bookSeatHandler = () => {
         // cart
         console.log("SEATS: ", seat);
         dispatch(bookSeat(id, seat));
         navigate(`/bookedSeats/${id}`)
     }
+    const submitHandler = (e) => {
+      e.preventDefault();
+      if (comment && rating) {
+        dispatch(
+          createReview(id, { rating, comment, name: userInfo.name })
+        );
+      } else {
+        alert('Please enter comment and rating');
+      }
+    };
 
     return(
        
 
-        <div className=' '>
+        <div className=''>
+           
         {loading? ( 
          <LoadingBox> </LoadingBox>
         ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
         ) : ( 
 
-          <div className="container-fluid bus-screen-details marginTop">
+          <div className="container-fluid bus-screen-details  ">
           <div 
             className="bus-item row bus-screen-detail "
+            
             key = {bus._id}
            >
+            
             <div className=" col-1 ">
             {/* <button className='' onClick={() => navigate(-1)}><img src={angelleft}/></button> */}
            {/* { console.log(navigate(-1))} */}
@@ -79,16 +113,17 @@ export default function BusScreen(props){
             </div>
             <div className="col-2 ml-n4 mt-4 ">
               <span
-                className=" h4 text-uppercase"
+                className=" h5 text-uppercase"
                 >
+                  
                 {bus.seller.seller.name}
               </span>
             </div>
             <div className="col-2 ml-n3 border-left mt-3 mb-3">
             <div className="row">
                 <div className="col-12 ">
-                  <span className="p h5 font-weight-normal">Price: </span>
-                  <span className="p font-weight-bold h5 text-capitalize">{bus.price}</span>
+                  <span className="p fs-5 font-weight-normal">Price: </span>
+                  <span className="p  font-weight-bold h5">{bus.price}</span>
                 </div>
                 <div className="col-12 mt-2 ">
                   <span className="h5 p font-weight-normal">Seats Left: </span>
@@ -107,7 +142,7 @@ export default function BusScreen(props){
                   <span className="p h5 font-weight-normal">Rating: </span>
                   <span className="p font-weight-bold h5"
                     ><i className="fas fa-star text-warning"></i>
-                  {bus.rating} </span
+                  {bus.rating.toFixed(1)} </span
                   >
                 </div>
               </div>  
@@ -150,14 +185,14 @@ export default function BusScreen(props){
         {/* <MovieContext.Provider value={{ movies, changeState: EditMovies }}>
           <div className=" row container-fluid">
         <div className="bus_seats col-2">
-        <span class="badge badge-dark">Available Seats</span>
+        <span className="badge badge-dark">Available Seats</span>
 
 				<SeatMatrix />
     
 		</div>
     <div className= "  col-2">
       <div className='bus_seats_book'>
-      <span class="badge badge-dark ml-3">Seat Status</span>
+      <span className="badge badge-dark ml-3">Seat Status</span>
 
       <SeatAvailability />
 
@@ -177,8 +212,9 @@ export default function BusScreen(props){
        </div>
      <BiggerWrapper>
       <Wrapper>
-      
+    
         {
+          
         bus && bus.seats.length > 0 ? (
           bus.seats.map((seat) => {
             // console.log(seat.id);
@@ -188,7 +224,7 @@ export default function BusScreen(props){
                   {seat.isAvailable ? (
                     <>
                       <Seat
-                        type="radio"
+                        type="checkbox"
                         name="seat"
                         onChange={() => {
                          
@@ -223,7 +259,7 @@ export default function BusScreen(props){
         
     <div className= "">
       <div className=''>
-      <Infolabel class="badge badge-dark">Seat Status</Infolabel>
+      <Infolabel className="ml-2 badge badge-dark">Seat Status</Infolabel>
 
       <div className="row container-fluid mr-5">
 			<div className="mr-5 col-6 mt-3">Available: &ensp; <Available className="mleft "></Available>  </div>
@@ -243,9 +279,109 @@ export default function BusScreen(props){
 
     </div>
 </SeatStatus>
+<div className='ml-5'>
+          {userInfo ? (
+                  <form className="form" onSubmit={submitHandler}>
+                    <div>
+                      <h2>Write a customer review</h2>
+                    </div>
+                    <div>
+                      <label htmlFor="rating">Rating</label>
+                      <select
+                      className="custom-select"
+                        id="rating"
+                        value={rating}
+                        onChange={(e) => setRating(e.target.value)}
+                      >
+                        <option value="">Select...</option>
+                        <option value="1">1- Poor</option>
+                        <option value="2">2- Fair</option>
+                        <option value="3">3- Good</option>
+                        <option value="4">4- Very good</option>
+                        <option value="5">5- Excelent</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label htmlFor="comment">Comment</label>
+                      <textarea
+                      className='form-control'
+                        id="comment"
+                        value={comment}
+                        onChange={(e) => setComment(e.target.value)}
+                      ></textarea>
+                    </div>
+                    <div>
+                      <label />
+                      <button className="btn btn-primary" type="submit">
+                        Submit
+                      </button>
+                    </div>
+                    <div>
+                      {loadingReviewCreate && <LoadingBox></LoadingBox>}
+                      {errorReviewCreate && (
+                        <MessageBox variant="danger">
+                          {errorReviewCreate}
+                        </MessageBox>
+                      )}
+                    </div>
+                  </form>
+                ) : (
+                  <MessageBox>
+                    Please <Link to="/signin">Sign In</Link> to write a review
+                  </MessageBox>
+                )}
+              
+          
+          </div>
     </BiggerWrapper>
-    
 
+    <div className='container mt-5'>
+    {loading? ( 
+         <LoadingBox> </LoadingBox>
+        ) : error ? (
+        <MessageBox variant="danger">{error}</MessageBox>
+        ) : (
+      
+<>
+
+      <div className="list-group row">
+        <div className="col-6">
+        <h2 className='mt-2 mb-3' id="reviews">Reviews</h2>
+        {
+            bus.reviews.length === 0 && (
+              <MessageBox>There is no review</MessageBox>
+            )}
+                    
+              {bus.reviews.map((review) => (
+
+<a key={review._id} className=" list-group-item list-group-item-action ">
+<div className="d-flex w-100 justify-content-between">
+  <h5 className="mb-1">{review.name}</h5>
+  <small>{review.createdAt.substring(0, 10)}</small>
+</div>
+<p className="mb-1"> <Ratting rating={review.rating} caption=" "></Ratting></p>
+<small>{review.comment}</small>
+</a>
+      
+              ))}
+             
+        
+          </div>
+      
+         
+      </div>
+
+
+
+      
+   
+    
+    
+       
+</>
+            )}
+        </div>
+ 
 
     </div>
 
@@ -372,7 +508,7 @@ const Infolabel = styled.span`
   padding: 0.2rem;
    border-radius: 0.2rem; 
   font-size: 1rem;
- margin: 1rem;
+  
   `
   const Button = styled.button`
 

@@ -632,7 +632,7 @@ export default function SearchScreen(props) {
                   
             
                   <div className=" color-white shadow-md rounded py-2  px-2">
-                    <div className='filer-header-text h3'><span >Filter</span></div>
+                    <div className='filer-header-text h4'><span >Filter</span></div>
                <article className=" filter-group ">
                    <header className="card-header color-white bg-white">
                        <a href="#" data-toggle="collapse" data-target="#collapse_aside1" data-abc="true" aria-expanded="false" className="collapsed ">
@@ -674,7 +674,7 @@ export default function SearchScreen(props) {
                <article className=" filter-group">
                    <header className="card-header bg-white color-white">
                        <a href="#" data-toggle="collapse" data-target="#collapse_aside2" data-abc="true" aria-expanded="false" className="collapsed">
-                       <h5 className='text-dark category-name'>Price&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <i className="  icon-control fa fa-chevron-down down-icon justify-content-end"></i> </h5>
+                       <h5  className='text-dark category-name'>Price&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <i className="  icon-control fa fa-chevron-down down-icon justify-content-end"></i> </h5>
                        </a>
                    </header>
                    <div className=" border-bottom filter-content collapse" id="collapse_aside2" >
@@ -731,7 +731,7 @@ export default function SearchScreen(props) {
                       
        
                            <ul className="list-menu">
-                           {/* {ratings.map((r) => (
+                           {ratings.map((r) => (
           <li key={r.name}>
             <Link
               to={getFilterUrl({ rating: r.rating })}
@@ -740,7 +740,7 @@ export default function SearchScreen(props) {
               <Ratting caption={' & up'} rating={r.rating}></Ratting>
             </Link>
           </li>
-        ))} */}
+        ))}
                            </ul>
            
                        </div> 
@@ -833,7 +833,7 @@ export default function SearchScreen(props) {
          
 
 <div className="color-white p-2 mt-1 rounded ml-2">
-<div className="font-weight-bold d-inline  "> {buses.length} Buses Found </div>
+<div className="font-weight-bold d-inline  "> {buses.length}  </div>Buses Found
 <div className='d-inline searchBar '> <label
                             for="input-sort"
                             className="text-muted col-form-label-sm  text-right  text-900  "
@@ -974,24 +974,24 @@ export default function SearchScreen(props) {
         <div class="col-md-2 mt-4"  key = {bus._id}>
             <div class="row  bg-white border rounded p-2 busCard">
                 <div class="col-md-2"><img class="img-fluid img-responsive rounded product-image" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHEhMTBxIWEBUVExUWGBcWFxkXFhgYFRcXFxYXGBUYHy0gJB0lGxUXITIiJiorLy4uGB82ODMtNygtLisBCgoKDg0OGxAQGy0lHyYvLS0tLSstLS0tLS0tNS0rLS0tLS0tNS0tLS0tKystLSstLS0tLS0tLS0tLS0tLS0tK//AABEIAOEA4QMBIgACEQEDEQH/xAAcAAEAAQUBAQAAAAAAAAAAAAAABQMEBgcIAgH/xABPEAACAgECAwIIBwoKCgMAAAAAAQIDBAURBhIhBzETMkFRYXGBoRQiUnKRk7EVNEJzgpKisrPRFhcjMzVTg8HC0iRUVWJjdJTD0+FDREX/xAAYAQEBAQEBAAAAAAAAAAAAAAAAAQIDBP/EACMRAQEAAgICAgIDAQAAAAAAAAABAhEDMRNBElEygSFhcSL/2gAMAwEAAhEDEQA/AN4gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAs9Y1CnSaLb8nxaq5TfpUU3svS9tjSWp9serZa/0XHrq+dZZLb21utmscbemcs5j23vOcYLebSXnfQjcriTQsP78zMev591cftkc6Z3G2r5r3nHHi/lfB67JfnXKb95bPi7iH8HJlD8WoV/s4o34q5Xmjol8bcKL/APQxPr6/8xWo4s4byXtj52LN+aN9bf0KRzTPiTX5+Nm5P19i+yR9p4g16b2ryb7G/wAFznZv+TLff6C+JPP/AE6kWo4MtuW6t793x49feXKafcc9cO4eZxBKirGxcJXWfCZWWW4sHvGnwaTlFR2i+eUotxim91v3E+tA4n0Ld/AGl8vS8uyrb0/B7HKMn6ORIxcNOsz3/Lc4NS4PHOTiNQyM6VEv6rVMR1S/6ihxivXKJl+DxRqU4qWRheHg/wD5cK+vJr9ez5J/RFmbjYsyjKwQWNxfoV8lCy5UTfRV5EZY9jfmULlFv2bk5GSl1j1RGn0AAAAAAAAAAAAAAAAAAAAAILiTijD0JwrcZ332vaqipc1s/Tt3KK8snsujJ0544uzcuniCyVNk4tZWPBOMmnybVbw6Pxer6dz3ZrHHbGeXxjKO1XXOJY4PJquPRiwyLIw5Y3StuXL/ACjUtoqG3xEns33mmzaXb1myvyaKa+qppdkvMndPlW/1a/ONWnfj/F5uW/8AQADbmnOC+HpcT5deOp+Di95Tl5VCHWXKvlPol69/IZdx9l6twRbHF0LweFRKvni6Ot1i3cea66Uebm3Xcnt172WPYn/SkfxFv2RJPt9+/Mb/AJZ/tJHO3eenWTXHtN9jNVmRPw2S3KaxG3J9W3k5uS5Nvzv4PF7+k2yYP2S4yqw4S8rqoj7PB+GX7dmcHHLt6cPxUsjGoyouOTCNkX3qSUk/YzVepcNYOtaj4DhGv4BHHa+FZWO5VPma3WPXGDUXPZ7t7dPdLZmtZdmDRbZRHnnGD5I/Km+kI+2TS9pbcMaNXoOPCmL55dZ2T8tls3zW2P0yk2/Qtl5BLos2vfgVEq1XevCxUUv5T47e3lk5d79ZFfwS0il76dGeI+v3vZOmPXyuqD8G/wAqLJ4GdrpCQwddw9vg+XHIS8mRUlN+jwtHKl6+RlWGpajTt8PxJemVE42wXslyWP2QZLAGlhRq+Bc0ufkk+6NidU36oWJS9xfo82QhYtrEpJ96a3X0MpU4dFH8xHkXmj8WP5q6e4KrgAAAAAAAAAAAAAAAHP8AxdourXa7OdONdKEsvHkpxqm4NJVbvnS5dls93v02Z0AU8m6GPCU7OijFyfqit39hrHLTOWPyc+9pFvw2zOv33UtRrxo+iOJjyViXo57Iv1mBGacYwtq07S5XeNkSzMqfpd065R/QmjCz0Y9PJyfkAA0wmOE+IcjhjJjkYkY2NRlFxlvs1Jdeq8vcV+NuLMri22F2ZXCrkr5EobtbbuTbb9ZAHyUXNbR730+kmpva/K606m4Jw1g4dMV5KqV+ZTXX/gJu62uiLlc1GMU223skkt22/NsecWlY8VGPkWxjPH9c9RjjYUG0svJjC3bo/AVxldct18pVqH5Z5e693UR8NR4i403loEq8HDUl4O+2p223uEk1OFTaUa+aPRy6vbculpPHVPianj2/Pw+X9Swy6mqumKjUlGMUkkuiSS2SS82x7GzTEYx7Qae+WnXezIqf0pyXuKsdQ41q/ncDFs+Zlyj7p0k5fq+mY8nG++qEl3xlZBNetN7lP7u6P/rVH1sP3jYjlrut1/fGl3P8XdjT/Wsiy4r4ge3+kYmVV66lP9jKRdrWdKl3ZFL/ALSH7z2tU0+XdfW/y4/vB+1CrXMOzvVsPn0XV++cEXNeo4VniWwfo5lv9B6jm4kvFsg/VJfvKsbK5+K0/aQek0+4+hdO4BQAAAAAAAAAAAAAMa7R8t4emZji+VypdSbe3xrmqo9fXNGSmI9pmPTm41NOU9oXZuJXPrt8R2xcuvk6JlnaXpB8b6JoHEOHRRh52NVZjRiqnK2HK0oKLhLZ7pNRj1Xc0u81Fl8J6rjNpPHtXyq8rHafqTsUvcbpXZDwh/V2/WyPv8UPCH9VZ9bP950xzkcsuO5emhrdJzavHivZZW/skWk4Sr6T/u/uOhf4o+EP6qz66f7z2uyXg5d9M3/bW/3SNeWMeGudST4YwbdTzMarHi5uV1e6XyVJObfoUU2/Ub+p7LeDauqxd/nXXS9znsS2n6Zw3w1v8BroxXLo2uWM5eht/GfqF5Z6Jw3f8psgVD7oahzw6wxKJ17+R3ZDhKUfXCuuLf45ekmlKORBOmXSUU1JeZrdNb+g+YmLThxUMdcqW787bb3lJt9W2222+rbZwehWZY5OJdmdL5uEPk1txk/nWL4y/J2fpZ91PVcLSo82dPlXXZKMpye3e1CCcml5Xt0KuBm4uo1xtwJxtrmt4yi94tehoKp42l4GKlHHprgl5FCK9L8neXEaao+LFL2IqADzyxXcj0DxbFzTUXtv5V3r1ekD2DGqcPweTPFypzuosq8PXGycpSTjJQtg5t80ofHrkk29nKXkSSqcM5ccZX4+TZv8GyHVCVkt5yhKuu6tOTe7cY3KG76vk3e76lTbIQfIyUvFPpFAAAAAAAAAAAAAAxDtMpduPjd3TUcJvfu63Rj19G8kZeQnGml3avhX1Yn85yqdX42qUba+vz4RLO0vSw1SjWsCKs4dxKPC90oKaVc4vr1e0HzJro9n0cl5TH7eKO0inx9Ig/m2KX6s2T9HHGO0nkYWoVvZbp4V7SflW8Ysqfw60lePVmR9eFlf+Mv6Zv8ArF/4ZdoX+x/1v3lSPFnaJPxdHj7Z8v2yMjfH/D0fHlfH14mUv+0UpdpXCMHtblcj80qrov6HAv6TrurzFxvCxT1HCd1svjTnKNLXM/wVzT5uVeKuncl5dy8qxsuCaxaqMZPyreb/ADIxit/yn7SIXaTwe/8A7kPzbP8AKev4x+EP9ch9E/8AKTV+mt4/bJcamONCMId0Yxit+/aK2X2FU19n9sHCuN97O7If+5W4++3lMcz+2+fdp2F+Vbb/AIIx/wAQmGX0l5MZ7bgVUVJy8rSW/oXk+lt+0xfh+C0vUc7Go6V2QpzIRXdGdrnXckvM5VRl65PzlLs14yfFtEnmckb65tThDdLlfWElGTb226b798Wal7UuI5ahqNr0q2UYQrhQ5VzcVPkcpS8V9UpTkvyS44W3SZZyTbf2fq2naat9RvqpXnsnGH6zMbz+0/hHC6PJVr81UJz/AEkuX3nNb5I9ZbL0/wDsm9K4V4g1f+jsS6a+U4OEPrJ7R95vxSd1z81vUbU1Dtt06vf7m4ltj8nhJRrX6PM/cRGJ206hZkVfDKK68fm/lFHmnZytbbxk2l0ez25eu2xZ6V2M69lddRuqxl5lvbNetLaP6RmWldjfDuL11CduS/M5eDh7FXtL6ZMl+EWeSojM7V9Fr1JWxhO3HjjSqU4rabnOcZyahPb4vxIrrs915jHsXI7QNXy78rh2rIx1fZz7NKNWyUYQ38N8RtQjFNrzG6tK4c0XR/6LxqqX8qMFzP1z8Z+1kqjPyk6jfwt7rFOFYcbx2/hLPFcf+HGbt9rW0PoRlYBm3bcmgAEUAAAAAAAAAAAAAR+ralPTo71UXZL+TTGLf6Ukvea81/tC4vp3WmaPdUvl212W/o1JJfnM2mCyyembLfbmnXOMONs3dajdkUxf4MISoS9G8UpbetsxKd/hG3ZLmb723u362zsMtr8DDyPviqE/nQi/tR0nJJ6crw2+3Iu6fcDqe/g/hnI/ncHGfp8DBP6UiOyezXg/J8fDjH5k7IfqSRryxnwX7c0tpd5KaVw5rer7fczFttT/AAlBqH1kto+86R0jg3hzR9np+JVFrulKPPP6ye8veTxLy/Szg+60Ho3Y/wAS5G0s2yvETWz+M52bPvW0Pi/pGYaT2MaDjbPUrbcl+bdVQ+iHxv0jZgMXkyrpOPGIbSeFdA0bb7m4tVbX4XKnP6yW8veTIBh00AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//Z"/>
-                <span className='font-weight-bold ml-3'>{bus.departureDate}</span>
+                {/* <span className='font-weight-bold ml-3'>{bus.departureDate}</span> */}
                 </div>
-                <div class="col-md-3 mt-1">
-                    <h5>{bus.seller.seller.name}</h5>
-                    <div className="col-auto  text-1">
+                <div class="col-md-4 mt-1">
+                    <span className='fw-bolder'>{bus.seller.seller.name}</span>
+                    <div className="col-12  text-1">
                 <span className="text-muted for-font">Rating:  &nbsp; </span>
-                <span className="font-weight-bold   for-font"
+                <span className="fw-semibold   for-font"
                   ><i className="fas fa-star text-warning"></i>
-                 {bus.rating} </span
+                 {bus.rating.toFixed(1)} </span
                 >
               </div>
               <div className="col-md-10 text-1">
                 <span className="text-muted for-font">Seats Left: </span>
-                <span className="font-weight-bold for-font">{bus.seats_remaining}</span>
+                <span className="fw-semibold for-font">{bus.seats_remaining}</span>
               </div>
               <div className="col-auto text-1">
                 <span className="text-muted for-font">Type: &nbsp;  &nbsp;  &nbsp;  &nbsp;  </span>
-                <span className="font-weight-bold for-font">{bus.bus_type}</span>
+                <span className="fw-semibold  for-font">{bus.bus_type}</span>
               </div>
                     <div className="mt-2">
  
@@ -1003,18 +1003,22 @@ export default function SearchScreen(props) {
                 <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                     <div class="d-flex flex-row align-items-center">
                     <span className="text-muted for-font">From:&nbsp;&nbsp; </span>
-                <span className="font-weight-bold for-font text-capitalize">{bus.from}</span>
+                <span className="fw-semibold for-font text-capitalize">{bus.from}</span>
                     </div>
-                    <br/><br/>
+                    
                     <div class="d-flex flex-row align-items-center">
                     <span className="text-muted for-font">To: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                <span className="font-weight-bold for-font text-capitalize">{bus.to}</span>
+                <span className="fw-semibold for-font text-capitalize">{bus.to}</span>
+                    </div>
+                    <div class="d-flex flex-row align-items-center">
+                    <span className="text-muted for-font">Date: &nbsp;&nbsp;</span>
+                <span className="fw-semibold for-font text-capitalize">{bus.departureDate}</span>
                     </div>
                 </div> 
 
                 <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                     <div class="d-flex flex-row align-items-center">
-                        <h5 class="mr-1"> {bus.price}.0 PKR</h5>
+                        <span class="mr-1 fw-bolder"> {bus.price}.0 PKR</span>
                     </div>
                     {/* <h6 class="text-success">Free shipping</h6> */}
                     <div class="d-flex flex-column mt-4">

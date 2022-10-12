@@ -3,6 +3,18 @@ import { nanoid } from 'nanoid';
 
 
 description:"Daewoo ."
+
+const reviewSchema = new mongoose.Schema(
+    {
+      name: { type: String, required: true },
+      comment: { type: String, required: true },
+      rating: { type: Number, required: true },
+    },
+    {
+      timestamps: true,
+    }
+  );
+
 const busSchema = new mongoose.Schema({
     operator:{
         type: String,
@@ -43,6 +55,7 @@ const busSchema = new mongoose.Schema({
         type: Number,
         require: true,
     },
+    reviews: [reviewSchema],
     from:{
         type: String,
         require: true,

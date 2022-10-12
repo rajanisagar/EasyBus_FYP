@@ -8,10 +8,10 @@ export default function Ratting(props){
                 <i
                     className={
                     rating >= 1 
-                        ? "fa fa-star" 
+                        ? "fa fa-star text-warning" 
                         : rating >= 0.5 
-                        ?'fa fa-star-half-o' 
-                        :'fa fa-star-o' 
+                        ?'fa fa-star-half-o text-warning' 
+                        :'fa fa-star-o text-warning' 
                     }
                 ></i>
             </span>
@@ -19,10 +19,10 @@ export default function Ratting(props){
             <i
                 className={
                     rating >= 2
-                        ? "fa fa-star" 
+                        ? "fa fa-star text-warning" 
                         : rating >= 1.5 
-                        ?'fa fa-star-half-o' 
-                        :'fa fa-star-o' 
+                        ?'fa fa-star-half-o text-warning' 
+                        :'fa fa-star-o text-warning' 
                     }
                 ></i>
             </span>
@@ -30,10 +30,10 @@ export default function Ratting(props){
             <i
                 className={
                     rating >= 3
-                        ? "fa fa-star" 
+                        ? "fa fa-star text-warning" 
                         : rating >= 2.5 
-                        ?'fa fa-star-half-o' 
-                        :'fa fa-star-o' 
+                        ?'fa fa-star-half-o text-warning' 
+                        :'fa fa-star-o text-warning' 
                     }
                 ></i>
             </span>
@@ -41,10 +41,10 @@ export default function Ratting(props){
             <i
                 className={
                     rating >= 4 
-                        ? "fa fa-star" 
+                        ? "fa fa-star text-warning" 
                         : rating >= 3.5 
-                        ?'fa fa-star-half-o' 
-                        :'fa fa-star-o' 
+                        ?'fa fa-star-half-o text-warning' 
+                        :'fa fa-star-o text-warning' 
                     }
                 ></i>
             </span>
@@ -52,10 +52,10 @@ export default function Ratting(props){
             <i
                 className={
                     rating >= 5
-                        ? "fa fa-star" 
+                        ? "fa fa-star text-warning" 
                         : rating >= 4.5 
-                        ?'fa fa-star-half-o' 
-                        :'fa fa-star-o' 
+                        ?'fa fa-star-half-o text-warning' 
+                        :'fa fa-star-o text-warning' 
                     }
                 ></i>
             </span>

@@ -1,4 +1,4 @@
-import { BUS_CATEGORY_LIST_FAIL, BUS_CATEGORY_LIST_REQUEST, BUS_CATEGORY_LIST_SUCCESS, BUS_CREATE_FAIL, BUS_CREATE_REQUEST, BUS_CREATE_RESET, BUS_CREATE_SUCCESS, BUS_DELETE_FAIL, BUS_DELETE_REQUEST, BUS_DELETE_RESET, BUS_DELETE_SUCCESS, BUS_DETAILS_FAIL, BUS_DETAILS_REQUEST, BUS_DETAILS_SUCCESS, BUS_LIST_FAIL, BUS_LIST_REQUEST, BUS_LIST_SUCCESS, BUS_UPDATE_FAIL, BUS_UPDATE_REQUEST, BUS_UPDATE_RESET, BUS_UPDATE_SUCCESS } from "../constants/busConstants";
+import { BUS_CATEGORY_LIST_FAIL, BUS_CATEGORY_LIST_REQUEST, BUS_CATEGORY_LIST_SUCCESS, BUS_CREATE_FAIL, BUS_CREATE_REQUEST, BUS_CREATE_RESET, BUS_CREATE_SUCCESS, BUS_DELETE_FAIL, BUS_DELETE_REQUEST, BUS_DELETE_RESET, BUS_DELETE_SUCCESS, BUS_DETAILS_FAIL, BUS_DETAILS_REQUEST, BUS_DETAILS_SUCCESS, BUS_LIST_FAIL, BUS_LIST_REQUEST, BUS_LIST_SUCCESS, BUS_REVIEW_CREATE_FAIL, BUS_REVIEW_CREATE_REQUEST, BUS_REVIEW_CREATE_RESET, BUS_REVIEW_CREATE_SUCCESS, BUS_UPDATE_FAIL, BUS_UPDATE_REQUEST, BUS_UPDATE_RESET, BUS_UPDATE_SUCCESS } from "../constants/busConstants";
 import { USER_LIST_FAIL, USER_LIST_REQUEST, USER_LIST_SUCCESS } from "../constants/userConstants";
 
 export const busListReducer = (state = {buses: []}, action) => {
@@ -88,3 +88,18 @@ export  const busDetailsReducer = (state = {loading:true}, action) =>{
         return state;
     }
   }
+
+  export const busReviewCreateReducer = (state = {}, action) => {
+    switch (action.type) {
+      case BUS_REVIEW_CREATE_REQUEST:
+        return { loading: true };
+      case BUS_REVIEW_CREATE_SUCCESS:
+        return { loading: false, success: true, review: action.payload };
+      case BUS_REVIEW_CREATE_FAIL:
+        return { loading: false, error: action.payload };
+      case BUS_REVIEW_CREATE_RESET:
+        return {};
+      default:
+        return state;
+    }
+  };

@@ -70,7 +70,7 @@ export default function BusListScreen(props) {
     <div className='marginTop container '>
       {/* <div className="row "> */}
         <h1 className='d-inline'>Buses</h1>
-        <button type="button" className="create-bus-btn d-inline ml-5 btn btn btn-primary btn-md" onClick={createHandler}>
+        <button type="button" className="create-bus-btn d-inline  btn btn btn-primary btn-md" onClick={createHandler}>
           Create Bus
         </button>
       
@@ -94,7 +94,7 @@ export default function BusListScreen(props) {
               <th>Bus Type</th>
               <th>PRICE</th>
               <th>Seats Remaining</th>
-              
+              <th>Bus Ratings</th>
               <th>ACTIONS</th>
             </tr>
           </thead>
@@ -108,6 +108,7 @@ export default function BusListScreen(props) {
                 <td>{bus.bus_type}</td>
                 <td>{bus.price}</td>
                 <td>{bus.seats_remaining}</td>
+                <td>{bus.rating}</td>
                 
                
                 <td>

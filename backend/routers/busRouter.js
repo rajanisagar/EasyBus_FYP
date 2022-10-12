@@ -226,6 +226,39 @@ busRouter.delete('/:id', isAuth, isSellerOrAdmin, expressAsyncHandler(async(req,
     }
 
 })) 
+busRouter.post(
+  '/:id/reviews',
+  isAuth,
+  expressAsyncHandler(async (req, res) => {
+    const busId = req.params.id;
+    const bus = await Bus.findById(busId);
+    if (bus) {
+      if (bus.reviews.find((x) => x.name === req.user.name)) {
+        return res
+          .status(400)
+          .send({ message: 'You already submitted a review' });
+      }
+      const review = {
+        name: req.user.name,
+        rating: Number(req.body.rating),
+        comment: req.body.comment,
+      };
+      bus.reviews.push(review);
+      bus.numReviews = bus.reviews.length;
+      bus.rating =
+        bus.reviews.reduce((a, c) => c.rating + a, 0) /
+        bus.reviews.length;
+      const updatedBus = await bus.save();
+      res.status(201).send({
+        message: 'Review Created',
+        review: updatedBus.reviews[updatedBus.reviews.length - 1],
+      });
+    } else {
+      res.status(404).send({ message: 'Bus Not Found' });
+    }
+  })
+);
+
 busRouter.get('/cancelreservation/:id', expressAsyncHandler(async(req, res) => {
     const order = await Order.findById(req.params.id);
     for(let i = 0; i < order.orderItems.length; i++){
